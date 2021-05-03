@@ -6,21 +6,21 @@ import { AppComponent } from './app.component';
 import { HomeModule } from './home/home.module';
 import { LoginModule } from './login/login.module';
 import { RegisterModule } from './register/register.module';
-import { HeaderComponent } from './header/header.component';
-import { FooterComponent } from './footer/footer.component';
+import { TemplateModule } from './template/template.module';
+
 
 @NgModule({
   declarations: [
     AppComponent,
-    HeaderComponent,
-    FooterComponent,
+
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     HomeModule,
     LoginModule,
-    RegisterModule
+    RegisterModule,
+    TemplateModule
   ],
   providers: [],
   bootstrap: [AppComponent]
