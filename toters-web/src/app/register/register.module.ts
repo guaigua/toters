@@ -1,12 +1,16 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RegisterStudentsComponent } from './register-students/register-students.component';
+import { RegisterTeachersComponent } from './register-teachers/register-teachers.component';
+
+
 
 
 
 @NgModule({
   declarations: [
-    RegisterStudentsComponent
+    RegisterStudentsComponent,
+    RegisterTeachersComponent
   ],
   imports: [
     CommonModule
