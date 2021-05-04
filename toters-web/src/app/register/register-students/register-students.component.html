@@ -1,3 +1,4 @@
+<app-header></app-header>
 <nav class="navbar navbar-expand-lg navbar-light navbar-laravel">
     <div class="container">
         <a class="navbar-brand" href="#">Laravel</a>
@@ -23,6 +24,88 @@
     <div class="container">
         <div class="row justify-content-center">
             <div class="col-md-8">
+
+                <ul class="nav nav-pills" >
+                    <li class="" style="width:50%"><a class="btn btn-lg btn-default" data-toggle="tab" href="#home">Doctor</a></li>                   
+                    <li class=" " style="width:48%"><a class=" btn btn-lg btn-default" data-toggle="tab" href="#menu1">patient</a></li>                
+                 </ul>
+                 <div class="tab-content">
+                    <div id="home" class="tab-pane fade in active">
+                      
+                        <form action="#">
+                        
+                          <div class="form-group">
+                            <label for="UserName">Doctor-name</label>
+                            <input type="text" class="form-control" id="email">
+                          </div>
+                          
+                          <div class="form-group">
+                            <label for="email">Email address:</label>
+                            <input type="email" class="form-control" id="email">
+                          </div>
+                        
+                          <div class="form-group">
+                            <label for="pwd">Password:</label>
+                            <input type="password" class="form-control" id="pwd">
+                          </div>
+                        
+                          <div class="form-group">
+                            <label for="pwd">Confirm Password:</label>
+                            <input type="password" class="form-control" id="pwd">
+                          </div>
+                        
+                        
+                        
+                          <button type="submit" class="btn btn-default btn-lg">Submit</button>
+                          <button type="submit" class=" pull-right btn-link"><a href="www.google.com">Forget password</a></button>
+                        
+                        </form>
+                        <br/>
+                        <a href="#" class="pull-right btn btn-block btn-danger" > Already Register ?   </a>
+                
+                
+                
+                    </div>
+                
+                    <div id="menu1" class="tab-pane fade">
+                
+                    <form action="#">
+                    
+                      <div class="form-group">
+                        <label for="UserName">UserName</label>
+                        <input type="text" class="form-control" id="email">
+                      </div>
+                      
+                      <div class="form-group">
+                        <label for="email">Email address:</label>
+                        <input type="email" class="form-control" id="email">
+                      </div>
+                    
+                      <div class="form-group">
+                        <label for="pwd">Password:</label>
+                        <input type="password" class="form-control" id="pwd">
+                      </div>
+                    
+                      <div class="form-group">
+                        <label for="pwd">Confirm Password:</label>
+                        <input type="password" class="form-control" id="pwd">
+                      </div>
+                    
+                    
+                    
+                      <button type="submit" class="btn btn-default">Submit</button>
+                    
+                      <button type="submit" class=" pull-right btn-link"><a href="www.google.com">Forget password</a></button>
+                
+                    </form>
+                    <br/>
+                    <a href="#" class="pull-right btn btn-block btn-success" > Already Register ?   </a>
+                
+                
+                    </div>
+                    
+                   </div>
+                   
                 <div class="card">
                     <div class="card-header">Register</div>
                     <div class="card-body">
@@ -66,5 +149,5 @@
             </div>
         </div>
     </div>
-    
+<app-footer></app-footer>
 
