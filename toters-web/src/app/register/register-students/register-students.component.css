@@ -48,9 +48,6 @@ img{
     height: 50px;
 }
 
-#btn btn-lg btn-default{
-    background-color: ##6C3D7B
-}
 
 .btn {
     display: inline-block;
@@ -67,4 +64,32 @@ img{
     line-height: 1.5;
     border-radius: .25rem;
     transition: color .15s ease-in-out,background-color .15s ease-in-out,border-color .15s ease-in-out,box-shadow .15s ease-in-out;
+    margin-top: 5px;
+
+}
+
+
+.pull-right.btn-link{
+    display: inline-block;
+    font-weight: 500;
+    color: white;
+    text-align: center;
+    vertical-align: middle;
+    -webkit-user-select: none;
+    user-select: none;
+    background-color: #6C3D7B;
+    border: 2px solid transparent;
+    padding: .375rem .75rem;
+    font-size: 1rem;
+    line-height: 1.5;
+    border-radius: .25rem;
+    transition: color .15s ease-in-out,background-color .15s ease-in-out,border-color .15s ease-in-out,box-shadow .15s ease-in-out;
+    text-decoration: none;
+    margin-top: 5px;
+}
+
+
+
+.btn.btn-lg.btn-default.active{
+    margin-left: 5px;
 }
