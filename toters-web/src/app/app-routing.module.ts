@@ -4,12 +4,14 @@ import { HomeComponent } from './home/home/home.component';
 import { LoginComponent } from './login/login/login.component';
 import { RegisterComponent } from './register/register/register.component';
 import { HeaderComponent } from './template/header/header.component';
+import { AdminComponent } from './admin/admin.component';
 
 
 const routes: Routes = [
   { path: '', component: LoginComponent},
   { path: 'register', component:RegisterComponent },
   { path: 'header', component:HeaderComponent },
+  { path: 'admin', component:AdminComponent}
 
 ];
 

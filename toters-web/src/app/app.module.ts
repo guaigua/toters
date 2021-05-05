@@ -8,11 +8,13 @@ import { HomeModule } from './home/home.module';
 import { LoginModule } from './login/login.module';
 import { RegisterModule } from './register/register.module';
 import { TemplateModule } from './template/template.module';
+import { AdminComponent } from './admin/admin.component';
 
 
 @NgModule({
   declarations: [
     AppComponent,
+    AdminComponent,
 
   ],
   imports: [
@@ -23,6 +25,7 @@ import { TemplateModule } from './template/template.module';
     RegisterModule,
     TemplateModule,
     FormsModule, 
+    
   ],
   providers: [],
   bootstrap: [AppComponent]
