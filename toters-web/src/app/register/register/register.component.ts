@@ -1,11 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 
 @Component({
-  selector: 'app-register-students',
-  templateUrl: './register-students.component.html',
-  styleUrls: ['./register-students.component.css']
+  selector: 'app-register',
+  templateUrl: './register.component.html',
+  styleUrls: ['./register.component.css']
 })
-export class RegisterStudentsComponent implements OnInit {
+export class RegisterComponent implements OnInit {
   teachers: any = {};
   students: any = {};
 
