@@ -1,15 +1,25 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { AdminComponent } from './admin.component';
-
-
+import { CrudstudentsComponent } from './crudstudents/crudstudents.component';
+import { CrudteachersComponent } from './crudteachers/crudteachers.component';
+import { AdminComponent } from './admin/admin.component';
+import { TemplateModule } from '../template/template.module';
+import { FormsModule } from '@angular/forms';
+import { MatTabsModule } from '@angular/material/tabs';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 @NgModule({
-  declarations: [
+  declarations: [   
+    CrudstudentsComponent,
+    CrudteachersComponent,
     AdminComponent
   ],
   imports: [
-    CommonModule
+    CommonModule,
+    TemplateModule,
+    FormsModule,
+    BrowserAnimationsModule,
+    MatTabsModule
   ]
 })
 export class AdminModule { }

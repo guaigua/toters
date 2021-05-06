@@ -7,13 +7,14 @@ import { HomeModule } from './home/home.module';
 import { LoginModule } from './login/login.module';
 import { RegisterModule } from './register/register.module';
 import { TemplateModule } from './template/template.module';
-import { AdminComponent } from './admin/admin.component';
+import { AdminModule } from './admin/admin.module';
+import { MatTabsModule } from '@angular/material/tabs';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 
 @NgModule({
   declarations: [
     AppComponent,
-    AdminComponent,
 
   ],
   imports: [
@@ -23,8 +24,12 @@ import { AdminComponent } from './admin/admin.component';
     LoginModule,
     RegisterModule,
     TemplateModule,
+    AdminModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    BrowserAnimationsModule,
+    MatTabsModule
+    
     
   ],
   providers: [],

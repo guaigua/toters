@@ -5,9 +5,6 @@ import { TemplateModule } from '../template/template.module';
 import { FormsModule } from '@angular/forms';
 
 
-
-
-
 @NgModule({
   declarations: [
     RegisterComponent,

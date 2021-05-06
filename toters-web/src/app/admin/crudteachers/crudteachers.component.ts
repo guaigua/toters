@@ -11,12 +11,13 @@ class Registration {
   ) {}
 }
 
+
 @Component({
-  selector: 'app-admin',
-  templateUrl: './admin.component.html',
-  styleUrls: ['./admin.component.css']
+  selector: 'app-crudteachers',
+  templateUrl: './crudteachers.component.html',
+  styleUrls: ['./crudteachers.component.css']
 })
-export class AdminComponent implements OnInit {
+export class CrudteachersComponent implements OnInit {
 
   constructor(    ) { 
         // Add default registration data.
@@ -102,3 +103,4 @@ export class AdminComponent implements OnInit {
   }
 
 }
+
