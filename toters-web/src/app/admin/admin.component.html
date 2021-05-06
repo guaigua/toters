@@ -1,36 +1,98 @@
 <app-header></app-header>
 
 
+  <div class="container">
+   <div class="row">
+
+
+    <link href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" type="text/css" rel="stylesheet">
+
+
+
+    <!-- FORM  -->	    
+    <div class="col-md-12">
+
+     <form class="form-horizontal" id="form-edit-client">
+      <fieldset>
+
+        <!-- Form Name -->
+        <legend>Usuarios</legend>
+
+        <!-- Text input-->
+        <div class="form-group">
+          <label class="col-md-4 control-label" for="client-name">Name</label>  
+          <div class="col-md-4">
+            <input id="client-name" name="client-name" type="text" placeholder="your client's name" class="form-control input-md">
+            <span class="help-block">Full name of your customer</span>  
+          </div>
+        </div>
+
+        <!-- Prepended text-->
+        <div class="form-group">
+          <label class="col-md-4 control-label" for="client-email">Email</label>
+          <div class="col-md-4">
+            <div class="input-group">
+              <span class="input-group-addon">@</span>
+              <input id="client-email" name="client-email" class="form-control" placeholder="yourname@yourdomain.com" type="text">
+            </div>
+            <p class="help-block">Email of your client</p>
+          </div>
+        </div>
 
 
 
 
 
+        <!-- Button -->
+        
+
+      </fieldset>
+    </form>
+    <div class="form-group">
+          <label class="col-md-4 control-label" for="btn-save"></label>
+          <div class="col-md-4" id="saveupdate">
+            <button id="btn-save" name="btn-save" class="btn btn-success" onclick="addClient()">Save</button>
+          </div>
+        </div>
+
+  </div> 
 
 
 
 
+  <!-- LIST -->
+  <div class=col-md-12>
+
+       <legend>Listado de usuarios</legend>
+
+     
+      <table class="table table-bordered table-condensed table-hover">
+        <thead>
+          <tr>
+            <td>Nome</td>
+            <th>Correo electronico</th>
+            <th>Açoes</th>
+          </tr>
+
+        </thead>
+        <tbody id="form-list-client-body">
+
+        </tbody>
+      </table>
+    
+    
+  </div>
+
+
+  <br> 
+
+  <!-- view -->
 
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+</div>
+</div>
 
 
 <app-footer></app-footer>
