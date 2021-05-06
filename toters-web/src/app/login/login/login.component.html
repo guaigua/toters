@@ -9,15 +9,15 @@
     
   
       <!-- Login Form -->
-      <form  >
-        <input type="text" id="login" class=" fadeIn second" name="login" placeholder="Correo electronico">
-        <input type="text" id="password" class="fadeIn third" name="login" placeholder="Data de nascimento">
-        <input type="submit" class="mt-3 fadeIn fourth" value="Log In">
+      <form #loginForm="ngForm"  (ngSubmit)="onLogin(loginForm)">
+        <input type="text" id="login" class=" fadeIn second" name="login" placeholder="Correo electronico" [(ngModel)]="login.mail">
+        <input type="text" id="password" class="fadeIn third" name="login" placeholder="Data de nascimento" [(ngModel)]="login.password">   
+        <input type="submit" id="submit" name="submit" class="mt-3 fadeIn fourth" value="Entrar">
       </form>
   
       <!-- Remind Passowrd -->
-      <div id="formFooter">
-        <a class="underlineHover" href="/">Cadastre-se?</a>
+      <div id="formFooter"> 
+        <a class="underlineHover" href="/register">Cadastre-se?</a>
       </div>
   
     </div>

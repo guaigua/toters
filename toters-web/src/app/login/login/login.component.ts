@@ -10,20 +10,18 @@ import { Router } from '@angular/router';
 export class LoginComponent implements OnInit {
 
 
-  loginForm = new FormGroup({
-    login: new FormControl('', Validators.required),
-    password: new FormControl('', Validators.required),
-  });
+
+  login: any = {};
   
   constructor(private router:Router) { }
 
   ngOnInit(): void {
   }
 
-  onLogin(form): void {
-    
+  onLogin(dataObj): void {
+    console.log('aqui');
 
-    this.router.navigate(['dashboard']);
+    this.router.navigate(['admin']);
 
 
   }
