@@ -10,11 +10,13 @@ import { TemplateModule } from './template/template.module';
 import { AdminModule } from './admin/admin.module';
 import { MatTabsModule } from '@angular/material/tabs';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { CrudcursosComponent } from './crudcursos/crudcursos.component';
 
 
 @NgModule({
   declarations: [
     AppComponent,
+    CrudcursosComponent,
 
   ],
   imports: [

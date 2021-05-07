@@ -3,6 +3,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { AdminComponent } from './admin/admin/admin.component';
 import { CrudstudentsComponent } from './admin/crudstudents/crudstudents.component';
 import { CrudteachersComponent } from './admin/crudteachers/crudteachers.component';
+import { CrudcursosComponent  } from './crudcursos/crudcursos.component';
 import { LoginComponent } from './login/login/login.component';
 import { RegisterComponent } from './register/register/register.component';
 
@@ -14,7 +15,10 @@ const routes: Routes = [
   { path: 'register', component:RegisterComponent },
   { path: 'admin', component:AdminComponent},
   { path: 'students', component:CrudstudentsComponent},
-  { path: 'teachers', component:CrudteachersComponent}
+  { path: 'teachers', component:CrudteachersComponent},
+  { path: 'cursos', component:CrudcursosComponent}
+
+  
 
 ];
 
