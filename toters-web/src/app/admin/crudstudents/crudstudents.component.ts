@@ -42,8 +42,6 @@ export class CrudstudentsComponent implements OnInit {
  // It maintains Array of countries.
  countries: string[] = ['US', 'UK', 'India', 'UAE'];
 
-
-   
   ngOnInit(): void {
     this.getStudents();
   }

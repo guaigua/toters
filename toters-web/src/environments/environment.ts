@@ -7,9 +7,10 @@ const pathServer = 'http://localhost:8080/';
 export const environment = {
   production: false,
   url: {
-    students: pathServer + 'students/'
+    students: pathServer + 'students/',
+    teachers: pathServer + 'teachers/'
   }
-};
+}
 
 /*
  * For easier debugging in development mode, you can import the following file

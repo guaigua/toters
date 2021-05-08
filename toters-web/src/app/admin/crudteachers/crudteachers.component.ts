@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ApiService } from 'src/app/services/api.service';
 
 class Registration {
   constructor(
@@ -19,7 +20,9 @@ class Registration {
 })
 export class CrudteachersComponent implements OnInit {
 
-  constructor(    ) { 
+  teachers: any = {};
+  
+  constructor(private teachersService: ApiService) { 
         // Add default registration data.
         this.registrations.push(new Registration('Johan', 'Peter', '', 'johan@gmail.com', 'johan123', 'UK'));
         this.registrations.push(new Registration('Mohamed', 'Tariq', '', 'tariq@gmail.com', 'tariq123', 'UAE'));
@@ -41,6 +44,12 @@ export class CrudteachersComponent implements OnInit {
     countries: string[] = ['US', 'UK', 'India', 'UAE'];
 
   ngOnInit(): void {
+    this.getTeachers();
+  }
+
+  public async getTeachers(){
+    const promise = await this.teachersService.getTeachers().toPromise();     
+    this.teachers = promise;
   }
 
   onNew() {

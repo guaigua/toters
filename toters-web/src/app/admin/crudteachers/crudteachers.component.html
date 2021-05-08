@@ -39,6 +39,8 @@
       </div>
     </div>
     <br>
+    {{ teachers | json }}
+
     <div class="regentry" *ngIf="showNew">
       <form (ngSubmit)="onSave()">
         <div class="form-group row">
