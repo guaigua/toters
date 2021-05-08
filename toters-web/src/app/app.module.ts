@@ -11,6 +11,7 @@ import { AdminModule } from './admin/admin.module';
 import { MatTabsModule } from '@angular/material/tabs';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { CrudcursosComponent } from './crudcursos/crudcursos.component';
+import { HttpClientModule } from '@angular/common/http';
 
 
 @NgModule({
@@ -22,6 +23,7 @@ import { CrudcursosComponent } from './crudcursos/crudcursos.component';
   imports: [
     BrowserModule,
     AppRoutingModule,
+    HttpClientModule,
     HomeModule,
     LoginModule,
     RegisterModule,

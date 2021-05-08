@@ -2,8 +2,13 @@
 // `ng build --prod` replaces `environment.ts` with `environment.prod.ts`.
 // The list of file replacements can be found in `angular.json`.
 
+const pathServer = 'http://localhost:8080/';
+
 export const environment = {
-  production: false
+  production: false,
+  url: {
+    students: pathServer + 'students/'
+  }
 };
 
 /*
@@ -14,3 +19,5 @@ export const environment = {
  * on performance if an error is thrown.
  */
 // import 'zone.js/dist/zone-error';  // Included with Angular CLI.
+
+

@@ -6,6 +6,9 @@ app.set('view engine', 'ejs')
 
 const cors = require("cors")
 app.use(cors())
+// app.use(cors({
+//   origin: 'http://localhost:4200/'
+// }));
 app.use(express.json())
 app.use('/', todolists);
 app.use('/students', students);
