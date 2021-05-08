@@ -1,7 +1,7 @@
 {
   "development": {
-    "database": "to-do-list",
-    "storage": "to-do-list.db",
+    "database": "toters",
+    "storage": "toters.db",
     "dialect": "sqlite"
   },
   "test": {

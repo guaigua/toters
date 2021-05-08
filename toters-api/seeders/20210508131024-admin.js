@@ -11,16 +11,24 @@ module.exports = {
      *   isBetaMember: false
      * }], {});
     */
-    await queryInterface.bulkInsert('Todolists', [{
-      description: 'Comer',
-      ready: 1,
+    await queryInterface.bulkInsert('Students', [{
+      firstname: 'German',
+      lastname: 'Guaigua',
+      mail: 'gerguaigua@gmail.com',
+      birth: '',
+      country: 'Venezuela',
+      urlphoto: '',
       createdAt: new Date(),
       updatedAt: new Date()
     }, {
-      description: 'Salir',
-      ready: 0,
+      firstname: 'Barbara',
+      lastname: 'Villegas',
+      mail: 'barbaraavillegas@gmail.com',
+      birth: '',
+      country: 'Venezuela',
+      urlphoto: '',
       createdAt: new Date(),
-      updatedAt: new Date()
+      updatedAt: new Date()    
     }]);
   },
 
