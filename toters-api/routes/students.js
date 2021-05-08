@@ -20,22 +20,22 @@ router.get('/students/:id', async  (req, res) => {
 router.post('/students', async (req, res) => { 
     var errors=[]
     if (!req.body.firstname){
-        errors.push("Nome não enviada");
+        errors.push("Nome não enviado");
     }
     if (!req.body.lastname){
-        errors.push("Sobrenome não enviada");
+        errors.push("Sobrenome não enviado");
     }
     if (!req.body.mail){
-        errors.push("Mail não enviada");
+        errors.push("Mail não enviado");
     }
     // if (!req.body.birth){
-    //     errors.push("Dado do nascemento  não enviada");
+    //     errors.push("Data do nascimento não enviado");
     // }
     if (!req.body.country){
         errors.push("País não enviada");
     }
     // if (!req.body.urlphoto){
-    //     errors.push("foto não enviada");
+    //     errors.push("foto não enviado");
     // }
     if (errors.length){
         res.status(400).json({"error":errors.join(",")});
