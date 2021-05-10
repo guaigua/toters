@@ -1,8 +1,8 @@
 const express = require('express')
 const todolists = require('./routes/todolists');
 const students = require('./routes/students');
-const students = require('./routes/teachers');
-const students = require('./routes/courses');
+const teachers = require('./routes/teachers');
+const courses = require('./routes/courses');
 
 
 const app = express()
