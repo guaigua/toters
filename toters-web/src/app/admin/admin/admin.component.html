@@ -1,7 +1,7 @@
 <app-header></app-header>
 
 
-  <div class="container">
+  <div class="container-fluid">
     <div class="row">
  
       <div class="col">
@@ -10,25 +10,16 @@
             <li class="nav-item"><a class="nav-link active" href="#">Dashboard Usuarios</a></li>
           </ul>
         </div>
-    
-        <div class="row flex-lg-nowrap">
-          <div class="col mb-3">
-            <div class="e-panel card">
-              <div class="card-body">
-                <div class="reglist">
-     
+      </div>
+    </div>    
 
-   <!-- LIST -->
-   <div class=col-md-12>
- 
-<!--         <legend>Registrados </legend>
- -->
-        <mat-tab-group>
-          <mat-tab label="Teachers"><app-crudteachers></app-crudteachers></mat-tab>
-          <mat-tab label="Students"> <app-crudstudents></app-crudstudents></mat-tab>          
-        </mat-tab-group>
-      
-  </div> 
+    <!-- LIST -->
+      <div class="row col-md-12"> 
+          <mat-tab-group>
+            <mat-tab label="Teachers"><app-crudteachers></app-crudteachers></mat-tab>
+            <mat-tab label="Students"> <app-crudstudents></app-crudstudents></mat-tab>          
+          </mat-tab-group>      
+      </div> 
  
  
   
@@ -36,8 +27,8 @@
  
  
  
- </div>
- </div>
+  </div>
+
 
 
 
