@@ -8,23 +8,25 @@
         <thead>
           <tr>
             <th>#</th>
-            <th>First Name</th>
-            <th>Last Name</th>
-            <th>DOB</th>
-            <th>Email</th>
-            <th>Country</th>
+            <th>Nome</th>
+            <th>Sobrenome</th>
+            <th>Mail</th>
+            <th>Data do nascimento</th>
+            <th>País</th>
+            <th>Photo</th>
             <th></th>
             <th></th>
           </tr>
         </thead>
         <tbody>
-          <tr *ngFor="let registration of registrations; let i = index">
+          <tr *ngFor="let teacher of toti.teachers; let i = index">
             <th scope="row">{{ i + 1 }}</th>
-            <td>{{ registration.firstName }}</td>
-            <td>{{ registration.lastName }}</td>
-            <td>{{ registration.dob.day + '/' + registration.dob.month + '/' + registration.dob.year}}</td>
-            <td>{{ registration.email }}</td>
-            <td>{{ registration.country }}</td>
+            <td>{{ teacher.firstname }}</td>
+            <td>{{ teacher.lastname }}</td>
+            <td>{{ teacher.mail }}</td>
+            <td>{{ teacher.birth }}</td>
+            <td>{{ teacher.country }}</td>
+            <td>{{ teacher.urlphoto }}</td>       
             <td>
               <button type="button" class="btn btn-info" (click)="onEdit(i)">Edit</button>
             </td>
@@ -39,7 +41,7 @@
       </div>
     </div>
     <br>
-    {{ teachers | json }}
+    {{ toti.teachers | json }}
 
     <div class="regentry" *ngIf="showNew">
       <form (ngSubmit)="onSave()">
