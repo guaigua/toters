@@ -1,98 +1,238 @@
 
 
-
-<!-- Test-->
- <div class="container">
-    <div class="reglist">
-      <table class="table table-striped">
-        <thead>
-          <tr>
-            <th>#</th>
-            <th>Nome</th>
-            <th>Sobrenome</th>
-            <th>Mail</th>
-            <th>Data do nascimento</th>
-            <th>País</th>
-            <th>Photo</th>
-            <th></th>
-            <th></th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr *ngFor="let teacher of toti.teachers; let i = index">
-            <th scope="row">{{ i + 1 }}</th>
-            <td>{{ teacher.firstname }}</td>
-            <td>{{ teacher.lastname }}</td>
-            <td>{{ teacher.mail }}</td>
-            <td>{{ teacher.birth }}</td>
-            <td>{{ teacher.country }}</td>
-            <td>{{ teacher.urlphoto }}</td>       
-            <td>
-              <button type="button" class="btn btn-info" (click)="onEdit(i)">Edit</button>
-            </td>
-            <td>
-              <button type="button" class="btn btn-danger" (click)="onDelete(i)">Delete</button>
-            </td>
-          </tr>
-        </tbody>
-      </table>
-      <div class="text-right">
-        <button type="submit" class="btn btn-primary" (click)="onNew()">New</button>
+<div class="container">
+  <div class="row flex-lg-nowrap">
+    
+    <div class="col">
+      <div class="e-tabs mb-3 px-3">
+        <ul class="nav nav-tabs">
+        </ul>
       </div>
-    </div>
-    <br>
-    {{ toti.teachers | json }}
-
-    <div class="regentry" *ngIf="showNew">
-      <form (ngSubmit)="onSave()">
-        <div class="form-group row">
-          <label for="firstname-input" class="col-2 col-form-label">First Name</label>
-          <div class="col-10">
-            <input class="form-control" type="text" [(ngModel)]="regModel.firstName" name="firstName">
-          </div>
-        </div>
-        <div class="form-group row">
-          <label for="lastname-input" class="col-2 col-form-label">Last Name</label>
-          <div class="col-10">
-            <input class="form-control" type="text" [(ngModel)]="regModel.lastName" name="lastName">
-          </div>
-        </div>
-        <div class="form-group row">
-          <label for="example-email-input" class="col-2 col-form-label">Mail</label>
-          <div class="col-10">
-            <input class="form-control" type="email" [(ngModel)]="regModel.email" name="email">
-          </div>
-        </div>
-        <div class="form-group row">
-          <label for="dob-input" class="col-2 col-form-label">Data do nascimento:</label>
-          <div class="col-3 input-group">
-            <input type="text" class="form-control" placeholder="yyyy-mm-dd" name="dob" [(ngModel)]="regModel.dob" ngbDatepicker #dob="ngbDatepicker">
-            <button class="input-group-addon" (click)="dob.toggle()" type="button">
-              <img src="assets/img/calendar-icon.svg" style="width: 1.2rem; height: 1rem; cursor: pointer;" />
-            </button>
-          </div>
-        </div>
   
-        <div class="form-group row">
-          <label for="example-password-input" class="col-2 col-form-label">Password</label>
-          <div class="col-10">
-            <input class="form-control" type="password" [(ngModel)]="regModel.password" name="password">
-          </div>
-        </div>
-        <div class="form-group row">
-          <label for="city-input" class="col-2 col-form-label">País</label>
-          <div class="col-10 dropdown" ngbDropdown myDrop="ngbDropdown">
-            <button type="button" class="btn btn-outline-primary" id="dropdownManual" name="country" ngbDropdownToggle>{{regModel.country}}</button>
-            <div ngbDropdownMenu aria-labelledby="dropdownManual">
-              <button type="button" class="dropdown-item" *ngFor="let country of countries" (click)="onChangeCountry(country)">{{country}}</button>
+      <div class="row flex-lg-nowrap">
+        <div class="col mb-3">
+          <div class="e-panel card">
+            <div class="card-body">
+              <div class="reglist">
+                <table class="table table-striped">
+                  <thead>
+                    <tr>
+                      <th>#</th>
+                      <th>Nome</th>
+                      <th>Sobrenome</th>
+                      <th>Mail</th>
+                      <th>Data do nascimento</th>
+                      <th>País</th>
+                      <th>Photo</th>
+                      <th></th>
+                      <th></th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr *ngFor="let teacher of toti.teachers; let i = index">
+                      <th scope="row">{{ i + 1 }}</th>
+                      <td>{{ teacher.firstname }}</td>
+                      <td>{{ teacher.lastname }}</td>
+                      <td>{{ teacher.mail }}</td>
+                      <td>{{ teacher.birth }}</td>
+                      <td>{{ teacher.country }}</td>
+                      <td>{{ teacher.urlphoto }}</td>       
+                      <td>
+                        <button type="button" class="btn btn-info" (click)="onEdit(i)">Editar</button>
+                      </td>
+                      <td>
+                        <button type="button" class="btn btn-danger" (click)="onDelete(i)">Deletar</button>
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+                <div class="text-right">
+                  <button type="submit" class="btn btn-primary" (click)="onNew()">Novo</button>
+                </div>
+              </div>
+              <br>
+          
+              <div class="regentry" *ngIf="showNew">
+                <form (ngSubmit)="onSave()">
+                  <div class="form-group row">
+                    <label for="firstname-input" class="col-2 col-form-label">First Name</label>
+                    <div class="col-10">
+                      <input class="form-control" type="text" [(ngModel)]="regModel.firstName" name="firstName">
+                    </div>
+                  </div>
+                  <div class="form-group row">
+                    <label for="lastname-input" class="col-2 col-form-label">Last Name</label>
+                    <div class="col-10">
+                      <input class="form-control" type="text" [(ngModel)]="regModel.lastName" name="lastName">
+                    </div>
+                  </div>
+                  <div class="form-group row">
+                    <label for="example-email-input" class="col-2 col-form-label">Mail</label>
+                    <div class="col-10">
+                      <input class="form-control" type="email" [(ngModel)]="regModel.email" name="email">
+                    </div>
+                  </div>
+                  <div class="form-group row">
+                    <label for="dob-input" class="col-2 col-form-label">Data do nascimento:</label>
+                    <div class="col-3 input-group">
+                      <input type="text" class="form-control" placeholder="yyyy-mm-dd" name="dob" [(ngModel)]="regModel.dob" ngbDatepicker #dob="ngbDatepicker">
+                      <button class="input-group-addon" (click)="dob.toggle()" type="button">
+                        <img src="assets/img/calendar-icon.svg" style="width: 1.2rem; height: 1rem; cursor: pointer;" />
+                      </button>
+                    </div>
+                  </div>
+            
+                  <div class="form-group row">
+                    <label for="example-password-input" class="col-2 col-form-label">Password</label>
+                    <div class="col-10">
+                      <input class="form-control" type="password" [(ngModel)]="regModel.password" name="password">
+                    </div>
+                  </div>
+                  <div class="form-group row">
+                    <label for="city-input" class="col-2 col-form-label">País</label>
+                    <div class="col-10 dropdown" ngbDropdown myDrop="ngbDropdown">
+                      <button type="button" class="btn btn-outline-primary" id="dropdownManual" name="country" ngbDropdownToggle>{{regModel.country}}</button>
+                      <div ngbDropdownMenu aria-labelledby="dropdownManual">
+                        <button type="button" class="dropdown-item" *ngFor="let country of countries" (click)="onChangeCountry(country)">{{country}}</button>
+                      </div>
+                    </div>
+                  </div>
+                  <button type="submit" class="btn btn-success">{{submitType}}</button>
+                  <button type="submit" class="btn btn-primary" (click)="onCancel()">Cancel</button>
+                </form>
+              </div>
+  
+             
             </div>
           </div>
         </div>
-        <button type="submit" class="btn btn-success">{{submitType}}</button>
-        <button type="submit" class="btn btn-primary" (click)="onCancel()">Cancel</button>
-      </form>
+  
+             <div class="col-12 col-lg-3 mb-3">
+          <div class="card">
+            <div class="card-body">
+              <div class="text-center px-xl-3">
+                <button class="btn btn-success btn-block" type="button" data-toggle="modal" data-target="#user-form-modal">Criar registro</button>
+              </div>
+              <hr class="my-3">
+              <div class="e-navlist e-navlist--active-bold">
+              </div>
+              <hr class="my-3">
+              <div>
+                <div class="form-group">
+                  <label>Procurar usuario:</label>
+                  <div><input class="form-control w-100" type="text" placeholder="Nome" value=""></div>
+                </div>
+              </div>
+              <hr class="my-3">
+             
+      <!-- User Form Modal -->
+      <div class="modal fade" role="dialog" tabindex="-1" id="user-form-modal">
+        <div class="modal-dialog modal-lg" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title">Create User</h5>
+              <button type="button" class="close" data-dismiss="modal">
+                <span aria-hidden="true">×</span>
+              </button>
+            </div>
+            <div class="modal-body">
+              <div class="py-1">
+                <form class="form" novalidate="">
+                  <div class="row">
+                    <div class="col">
+                      <div class="row">
+                        <div class="col">
+                          <div class="form-group">
+                            <label>Full Name</label>
+                            <input class="form-control" type="text" name="name" placeholder="John Smith" value="John Smith">
+                          </div>
+                        </div>
+                        <div class="col">
+                          <div class="form-group">
+                            <label>Username</label>
+                            <input class="form-control" type="text" name="username" placeholder="johnny.s" value="johnny.s">
+                          </div>
+                        </div>
+                      </div>
+                      <div class="row">
+                        <div class="col">
+                          <div class="form-group">
+                            <label>Email</label>
+                            <input class="form-control" type="text" placeholder="user@example.com">
+                          </div>
+                        </div>
+                      </div>
+                      <div class="row">
+                        <div class="col mb-3">
+                          <div class="form-group">
+                            <label>About</label>
+                            <textarea class="form-control" rows="5" placeholder="My Bio"></textarea>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="row">
+                    <div class="col-12 col-sm-6 mb-3">
+                      <div class="mb-2"><b>Change Password</b></div>
+                      <div class="row">
+                        <div class="col">
+                          <div class="form-group">
+                            <label>Current Password</label>
+                            <input class="form-control" type="password" placeholder="••••••">
+                          </div>
+                        </div>
+                      </div>
+                      <div class="row">
+                        <div class="col">
+                          <div class="form-group">
+                            <label>New Password</label>
+                            <input class="form-control" type="password" placeholder="••••••">
+                          </div>
+                        </div>
+                        <div class="col">
+                          <div class="form-group">
+                            <label>Confirm <span class="d-none d-xl-inline">Password</span></label>
+                            <input class="form-control" type="password" placeholder="••••••"></div>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="col-12 col-sm-5 offset-sm-1 mb-3">
+                      <div class="mb-2"><b>Keeping in Touch</b></div>
+                      <div class="row">
+                        <div class="col">
+                          <label>Email Notifications</label>
+                          <div class="custom-controls-stacked px-2">
+                            <div class="custom-control custom-checkbox">
+                              <input type="checkbox" class="custom-control-input" id="notifications-blog" checked="">
+                              <label class="custom-control-label" for="notifications-blog">Blog posts</label>
+                            </div>
+                            <div class="custom-control custom-checkbox">
+                              <input type="checkbox" class="custom-control-input" id="notifications-news" checked="">
+                              <label class="custom-control-label" for="notifications-news">Newsletter</label>
+                            </div>
+                            <div class="custom-control custom-checkbox">
+                              <input type="checkbox" class="custom-control-input" id="notifications-offers" checked="">
+                              <label class="custom-control-label" for="notifications-offers">Personal Offers</label>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="row">
+                    <div class="col d-flex justify-content-end">
+                      <button class="btn btn-primary" type="submit">Save Changes</button>
+                    </div>
+                  </div>
+                </form>
+  
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
   </div>
-
-
-
+  </div>
+  

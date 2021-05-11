@@ -26,12 +26,12 @@ router.post('/courses', async (req, res) => {
         errors.push("Descriçao não enviada");
     }
     if (!req.body.capacityl){
-        errors.push("Capacidade não enviada");
+        errors.push("Capacidade não enviada");                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                      
     }
     if (!req.body.hours){
        errors.push("Hora não enviada");
     }
-    if (!req.body.temary){
+    if (!req.body.temary){                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                  
         errors.push("Tema não enviado");
     }
    
@@ -42,7 +42,7 @@ router.post('/courses', async (req, res) => {
     const coursesCreate = await courses.create({             
         title: req.body.title,
         description: req.body.description,
-        capacity: req.body.capacity,
+        capacity: req.body.capacity,                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    
         hours: req.body.hours,
         temary: req.body.temary,
     })

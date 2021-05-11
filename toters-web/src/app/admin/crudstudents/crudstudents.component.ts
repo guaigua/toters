@@ -19,7 +19,7 @@ class Registration {
 })
 export class CrudstudentsComponent implements OnInit {
 
-  students: any = {};
+  toti: any = {};
 
   constructor(private studentsService: ApiService) { 
     // Add default registration data.
@@ -48,7 +48,7 @@ export class CrudstudentsComponent implements OnInit {
 
   public async getStudents(){
     const promise = await this.studentsService.getStudents().toPromise();     
-    this.students = promise;
+    this.toti = promise;
   }
 
   onNew() {

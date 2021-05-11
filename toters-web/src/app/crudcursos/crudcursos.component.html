@@ -22,39 +22,37 @@
                   <tr>
                     <th>#</th>
                     <th>Nome</th>
-                    <th>Sobrenome</th>
+                    <th>Descriçao</th>
                     <th>Mail</th>
-                    <th>Data do nascimento</th>
-                    <th>País</th>
-                    <th>Photo</th>
+                    <th>Capacidade</th>
+                    <th>Horas</th>
                     <th></th>
                     <th></th>
                   </tr>
                 </thead>
                 <tbody>
-                  <tr *ngFor="let teacher of toti.teachers; let i = index">
+                  <tr *ngFor="let course of toti.courses; let i = index">
                     <th scope="row">{{ i + 1 }}</th>
-                    <td>{{ teacher.firstname }}</td>
-                    <td>{{ teacher.lastname }}</td>
-                    <td>{{ teacher.mail }}</td>
-                    <td>{{ teacher.birth }}</td>
-                    <td>{{ teacher.country }}</td>
-                    <td>{{ teacher.urlphoto }}</td>       
+                    <td>{{ course.firstname }}</td>
+                    <td>{{ course.lastname }}</td>
+                    <td>{{ course.mail }}</td>
+                    <td>{{ course.birth }}</td>
+                    <td>{{ course.country }}</td>
+                    <td>{{ course.urlphoto }}</td>       
                     <td>
-                      <button type="button" class="btn btn-info" (click)="onEdit(i)">Edit</button>
+                      <button type="button" class="btn btn-info" (click)="onEdit(i)">Editar</button>
                     </td>
                     <td>
-                      <button type="button" class="btn btn-danger" (click)="onDelete(i)">Delete</button>
+                      <button type="button" class="btn btn-danger" (click)="onDelete(i)">Deletar</button>
                     </td>
                   </tr>
                 </tbody>
               </table>
               <div class="text-right">
-                <button type="submit" class="btn btn-primary" (click)="onNew()">New</button>
+                <button type="submit" class="btn btn-primary" (click)="onNew()">Novo registro</button>
               </div>
             </div>
             <br>
-            {{ toti.teachers | json }}
         
             <div class="regentry" *ngIf="showNew">
               <form (ngSubmit)="onSave()">
@@ -111,8 +109,7 @@
         </div>
       </div>
 
-      
-      <div class="col-12 col-lg-3 mb-3">
+           <div class="col-12 col-lg-3 mb-3">
         <div class="card">
           <div class="card-body">
             <div class="text-center px-xl-3">
@@ -124,8 +121,8 @@
             <hr class="my-3">
             <div>
               <div class="form-group">
-                <label>Search by Name:</label>
-                <div><input class="form-control w-100" type="text" placeholder="Name" value=""></div>
+                <label>Procurar usuario:</label>
+                <div><input class="form-control w-100" type="text" placeholder="Nome" value=""></div>
               </div>
             </div>
             <hr class="my-3">

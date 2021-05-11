@@ -1,0 +1,30 @@
+tr>
+          <th>#</th>
+          <th>Nome</th>
+          <th>Sobrenome</th>
+          <th>Mail</th>
+          <th>Data do nascimento</th>
+          <th>País</th>
+          <th>Photo</th>
+          <th></th>
+          <th></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let student of toti.students; let i = index">
+          <th scope="row">{{ i + 1 }}</th>
+          <td>{{ student.firstname }}</td>
+          <td>{{ student.lastname }}</td>
+          <td>{{ student.mail }}</td>
+          <td>{{ student.birth }}</td>
+          <td>{{ student.country }}</td>
+          <td>{{ student.urlphoto }}</td>       
+          <td>
+            <button type="button" class="btn btn-info" (click)="onEdit(i)">Edit</button>
+          </td>
+          <td>
+            <button type="button" class="btn btn-danger" (click)="onDelete(i)">Delete</button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
