@@ -19,7 +19,6 @@ class Registration {
   styleUrls: ['./crudteachers.component.css']
 })
 export class CrudteachersComponent implements OnInit {
-
   toti: any = {};
   
   constructor(private teachersService: ApiService) { 

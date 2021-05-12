@@ -23,7 +23,6 @@
                     <th>#</th>
                     <th>Nome</th>
                     <th>Descriçao</th>
-                    <th>Mail</th>
                     <th>Capacidade</th>
                     <th>Horas</th>
                     <th>Tema</th>
@@ -31,7 +30,7 @@
                   </tr>
                 </thead>
                 <tbody>
-          in        <tr *ngFor="let course of toti.courses; let i = index">
+                  <tr *ngFor="let course of toti.courses; let i = index">
                     <th scope="row">{{ i + 1 }}</th>
                     <td>{{ course.title }}</td>
                     <td>{{ course.description }}</td>
@@ -112,7 +111,7 @@
         <div class="card">
           <div class="card-body">
             <div class="text-center px-xl-3">
-              <button class="btn btn-success btn-block" type="button" data-toggle="modal" data-target="#user-form-modal">New User</button>
+              <button class="btn btn-success btn-block" type="button" data-toggle="modal" data-target="#user-form-modal">Criar Curso</button>
             </div>
             <hr class="my-3">
             <div class="e-navlist e-navlist--active-bold">
@@ -131,7 +130,7 @@
       <div class="modal-dialog modal-lg" role="document">
         <div class="modal-content">
           <div class="modal-header">
-            <h5 class="modal-title">Create User</h5>
+            <h5 class="modal-title">Criar Curso</h5>
             <button type="button" class="close" data-dismiss="modal">
               <span aria-hidden="true">×</span>
             </button>
@@ -144,13 +143,13 @@
                     <div class="row">
                       <div class="col">
                         <div class="form-group">
-                          <label>Full Name</label>
+                          <label>Nome Completo</label>
                           <input class="form-control" type="text" name="name" placeholder="John Smith" value="John Smith">
                         </div>
                       </div>
                       <div class="col">
                         <div class="form-group">
-                          <label>Username</label>
+                          <label>Data do nascimento</label>
                           <input class="form-control" type="text" name="username" placeholder="johnny.s" value="johnny.s">
                         </div>
                       </div>
@@ -166,7 +165,7 @@
                     <div class="row">
                       <div class="col mb-3">
                         <div class="form-group">
-                          <label>About</label>
+                          <label>Bio</label>
                           <textarea class="form-control" rows="5" placeholder="My Bio"></textarea>
                         </div>
                       </div>
@@ -198,29 +197,8 @@
                       </div>
                     </div>
                   </div>
-                  <div class="col-12 col-sm-5 offset-sm-1 mb-3">
-                    <div class="mb-2"><b>Keeping in Touch</b></div>
-                    <div class="row">
-                      <div class="col">
-                        <label>Email Notifications</label>
-                        <div class="custom-controls-stacked px-2">
-                          <div class="custom-control custom-checkbox">
-                            <input type="checkbox" class="custom-control-input" id="notifications-blog" checked="">
-                            <label class="custom-control-label" for="notifications-blog">Blog posts</label>
-                          </div>
-                          <div class="custom-control custom-checkbox">
-                            <input type="checkbox" class="custom-control-input" id="notifications-news" checked="">
-                            <label class="custom-control-label" for="notifications-news">Newsletter</label>
-                          </div>
-                          <div class="custom-control custom-checkbox">
-                            <input type="checkbox" class="custom-control-input" id="notifications-offers" checked="">
-                            <label class="custom-control-label" for="notifications-offers">Personal Offers</label>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
+
                   </div>
-                </div>
                 <div class="row">
                   <div class="col d-flex justify-content-end">
                     <button class="btn btn-primary" type="submit">Save Changes</button>
