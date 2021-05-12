@@ -8,7 +8,10 @@ export const environment = {
   production: false,
   url: {
     students: pathServer + 'students/',
-    teachers: pathServer + 'teachers/'
+    teachers: pathServer + 'teachers/',
+    courses: pathServer + 'courses/'
+    
+
   }
 }
 

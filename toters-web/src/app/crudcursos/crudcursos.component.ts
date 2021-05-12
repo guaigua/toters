@@ -3,12 +3,11 @@ import { ApiService } from 'src/app/services/api.service';
 
 class Registration {
   constructor(
-    public firstName: string = '',
-    public lastName: string = '',
-    public dob: string = '',
-    public email: string = '',
-    public password: string = '',
-    public country: string = 'Select country'
+    public title: string = '',
+    public description: string = '',
+    public capacity: string = '',
+    public hours: string = '',
+    public temary: string = '',
   ) {}
 }
 
@@ -20,11 +19,11 @@ class Registration {
 export class CrudcursosComponent implements OnInit {
   toti: any = {};
   
-  constructor(private teachersService: ApiService) { 
+  constructor(private coursesService: ApiService) { 
         // Add default registration data.
-        this.registrations.push(new Registration('Johan', 'Peter', '', 'johan@gmail.com', 'johan123', 'UK'));
+      /*   this.registrations.push(new Registration('Johan', 'Peter', '', 'johan@gmail.com', 'johan123', 'UK'));
         this.registrations.push(new Registration('Mohamed', 'Tariq', '', 'tariq@gmail.com', 'tariq123', 'UAE'));
-        this.registrations.push(new Registration('Nirmal', 'Kumar','', 'nirmal@gmail.com', 'nirmal123', 'India'));
+        this.registrations.push(new Registration('Nirmal', 'Kumar','', 'nirmal@gmail.com', 'nirmal123', 'India')); */
       
   }
 
@@ -42,13 +41,13 @@ export class CrudcursosComponent implements OnInit {
     countries: string[] = ['US', 'UK', 'India', 'UAE'];
 
   ngOnInit(): void {
-    this.getTeachers();
+    this.getCourses();
   }
 
-  public async getTeachers(){
-    const promise = await this.teachersService.getTeachers().toPromise();     
+  public async getCourses(){
+    const promise = await this.coursesService.getCourses().toPromise();     
     this.toti = promise;
-    console.log (this.toti.teachers);
+    console.log (this.toti.courses);
   }
 
   onNew() {
@@ -67,12 +66,11 @@ export class CrudcursosComponent implements OnInit {
       this.registrations.push(this.regModel);
     } else {
       // Update the existing properties values based on model.
-      this.registrations[this.selectedRow].firstName = this.regModel.firstName;
-      this.registrations[this.selectedRow].lastName = this.regModel.lastName;
-      this.registrations[this.selectedRow].dob = this.regModel.dob;
-      this.registrations[this.selectedRow].email = this.regModel.email;
-      this.registrations[this.selectedRow].password = this.regModel.password;
-      this.registrations[this.selectedRow].country = this.regModel.country;
+      this.registrations[this.selectedRow].title = this.regModel.title;
+      this.registrations[this.selectedRow].description = this.regModel.description;
+      this.registrations[this.selectedRow].capacity = this.regModel.capacity;
+      this.registrations[this.selectedRow].hours = this.regModel.hours;
+      this.registrations[this.selectedRow].temary = this.regModel.temary;
     }
     // Hide registration entry section.
     this.showNew = false;
@@ -104,10 +102,10 @@ export class CrudcursosComponent implements OnInit {
     this.showNew = false;
   }
 
-  // This method associate to Bootstrap dropdown selection change.
+/*   // This method associate to Bootstrap dropdown selection change.
   onChangeCountry(country: string) {
     // Assign corresponding selected country to model.
     this.regModel.country = country;
-  }
+  } */
 
 }

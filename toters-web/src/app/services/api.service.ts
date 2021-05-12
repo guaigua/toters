@@ -21,5 +21,10 @@ export class ApiService {
     return this.http.get(environment.url.teachers + 'teachers/');
   }
 
+  getCourses() {
+    const headers = new Headers();
+    // headers.append('Content-Type', 'application/json');
+    return this.http.get(environment.url.courses + 'courses/');
+  }
 
 }

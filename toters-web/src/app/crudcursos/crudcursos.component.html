@@ -26,19 +26,18 @@
                     <th>Mail</th>
                     <th>Capacidade</th>
                     <th>Horas</th>
-                    <th></th>
+                    <th>Tema</th>
                     <th></th>
                   </tr>
                 </thead>
                 <tbody>
-                  <tr *ngFor="let course of toti.courses; let i = index">
+          in        <tr *ngFor="let course of toti.courses; let i = index">
                     <th scope="row">{{ i + 1 }}</th>
-                    <td>{{ course.firstname }}</td>
-                    <td>{{ course.lastname }}</td>
-                    <td>{{ course.mail }}</td>
-                    <td>{{ course.birth }}</td>
-                    <td>{{ course.country }}</td>
-                    <td>{{ course.urlphoto }}</td>       
+                    <td>{{ course.title }}</td>
+                    <td>{{ course.description }}</td>
+                    <td>{{ course.capacity }}</td>
+                    <td>{{ course.hours }}</td>
+                    <td>{{ course.temary }}</td>
                     <td>
                       <button type="button" class="btn btn-info" (click)="onEdit(i)">Editar</button>
                     </td>
@@ -48,9 +47,9 @@
                   </tr>
                 </tbody>
               </table>
-              <div class="text-right">
+<!--               <div class="text-right">
                 <button type="submit" class="btn btn-primary" (click)="onNew()">Novo registro</button>
-              </div>
+              </div> -->
             </div>
             <br>
         
