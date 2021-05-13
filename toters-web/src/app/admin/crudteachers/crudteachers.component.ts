@@ -22,13 +22,7 @@ export class CrudteachersComponent implements OnInit {
   toti: any = {};
   teachers: string = "teachers";
   
-  constructor(private teachersService: ApiService) { 
-        // Add default registration data.
-        this.registrations.push(new Registration('Johan', 'Peter', '', 'johan@gmail.com', 'johan123', 'UK'));
-        this.registrations.push(new Registration('Mohamed', 'Tariq', '', 'tariq@gmail.com', 'tariq123', 'UAE'));
-        this.registrations.push(new Registration('Nirmal', 'Kumar','', 'nirmal@gmail.com', 'nirmal123', 'India'));
-      
-  }
+  constructor(private teachersService: ApiService) {}
 
     // It maintains list of Registrations
     registrations: Registration[] = [];

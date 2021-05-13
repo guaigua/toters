@@ -20,10 +20,8 @@ export class RegisterViewComponent implements OnInit {
    
   }
 
-
   onSubmit(dataObj): void {
     this.crew = dataObj.form.value;
-    
     console.log(this.crew); 
 
     if ( this.flag  == "teachers") {
@@ -38,13 +36,27 @@ export class RegisterViewComponent implements OnInit {
           console.log(error);
 
         });  
-      }
-    else {
-      console.log("Estudiante");
-    }
+      } else {
 
+      //Create Students
+      this.crew = dataObj.form.value;
+      console.log(this.crew); 
+  
+      if ( this.flag  == "students") {
+        this.crewService.postStudents(this.crew)
+        .subscribe(   
+          (data)=>{
+            this.data = data;
+            this.successfully = true;         
+            console.log("Post Students con éxito", this.data);
+          },
+          (error)=>{ 
+            console.log(error);
+          });  
+      
   }
   
 
-
-}
+      }
+    }
+  }
