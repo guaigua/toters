@@ -6,19 +6,15 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./register.component.css']
 })
 export class RegisterComponent implements OnInit {
-  teachers: any = {};
-  students: any = {};
+
+  teachers: string = "teachers";
+  students: string = "students";
 
   constructor() { }
 
   ngOnInit(): void {
   }
 
-  onSubmit(dataObj): void {
-    this.teachers = dataObj.form.value;
-    this.students = dataObj.form.value;
-    console.log(this.teachers);
-    console.log(this.students);
-  }
+ 
 
 }

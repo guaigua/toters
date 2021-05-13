@@ -20,6 +20,7 @@ class Registration {
 })
 export class CrudteachersComponent implements OnInit {
   toti: any = {};
+  teachers: string = "teachers";
   
   constructor(private teachersService: ApiService) { 
         // Add default registration data.
@@ -48,8 +49,7 @@ export class CrudteachersComponent implements OnInit {
 
   public async getTeachers(){
     const promise = await this.teachersService.getTeachers().toPromise();     
-    this.toti = promise;
-    console.log (this.toti.teachers);
+    this.toti = promise;   
   }
 
   onNew() {

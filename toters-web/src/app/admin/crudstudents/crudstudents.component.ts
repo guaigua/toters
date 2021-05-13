@@ -20,6 +20,7 @@ class Registration {
 export class CrudstudentsComponent implements OnInit {
 
   toti: any = {};
+  students: string = "students";
 
   constructor(private studentsService: ApiService) { 
     // Add default registration data.

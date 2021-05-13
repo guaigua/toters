@@ -6,6 +6,7 @@ import { AdminComponent } from './admin/admin.component';
 import { TemplateModule } from '../shared/template/template.module';
 import { FormsModule } from '@angular/forms';
 import { CrudcursosComponent } from './crudcursos/crudcursos.component';
+import { SecurityModule } from '../security/security.module';
 
 @NgModule({
   declarations: [   
@@ -18,6 +19,7 @@ import { CrudcursosComponent } from './crudcursos/crudcursos.component';
     CommonModule,
     TemplateModule,
     FormsModule,
+    SecurityModule
   ]
 })
 export class AdminModule { }

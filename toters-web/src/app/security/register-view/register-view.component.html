@@ -1,0 +1,45 @@
+<div id="menu" class="container">                                
+    <form role="form" #teacherForm="ngForm"  (ngSubmit)="onSubmit(teacherForm)">
+    
+        <div class="form-group">
+            <label for="Name">Nome</label>
+            <input type="text" class="form-control" id="name" name="crew.name" [(ngModel)]="crew.name">
+        </div>
+
+        <div class="form-group">
+            <label for="Lastname">Sobrenome</label>
+            <input type="text" class="form-control" id="lastname" name="crew.lastname"  [(ngModel)]="crew.lastname">
+        </div>
+        
+        <div class="form-group">
+            <label for="Mail">Correo Electronico:</label>
+            <input type="email" class="form-control" id="mail" name="crew.mail"  [(ngModel)]="crew.mail">
+        </div>
+
+        <div class="form-group">
+            <label for="Country">País:</label>
+            <input type="text" class="form-control" id="country" name="crew.country"  [(ngModel)]="crew.country">
+        </div>
+
+        <div class="form-group">
+            <label for="Birth">Data do nascimento :</label>        
+            <input type="date" class="form-control" id="birth" name="crew.birth"  [(ngModel)]="crew.birth">
+        </div>
+        
+        <div class="form-group">
+            <label for="User_git">User Git</label>
+            <input type="text" class="form-control" id="user_git" name="crew.user_git" [(ngModel)]="crew.user_git">
+        </div>
+
+        <div class="row text-center ">
+            <div class="col-6">                        
+            <button type="submit" class="btn btn-default btn-lg">Enviar</button>
+            </div>
+            <div class="col-6">   
+                <a href="#" class="pull-right btn btn-block btn-danger">Você já se cadastrou ?   </a>
+            </div>
+        </div>
+
+    </form>
+    <br/>
+</div>
