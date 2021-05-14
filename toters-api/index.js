@@ -24,6 +24,6 @@ app.use('/courses', courses);
 
 
 
-app.listen(8080, () => {
-  console.log('Iniciando o ExpressJS na porta 8080')
+app.listen(8081, () => {
+  console.log('Iniciando o ExpressJS na porta 8081')
 })
