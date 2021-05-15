@@ -25,18 +25,27 @@
             <label for="Birth">Data do nascimento :</label>        
             <input type="date" class="form-control" id="birth" name="crew.birth"  [(ngModel)]="crew.birth">
         </div>
-        
-        <div class="form-group">
+
+        <!-- <div class="form-group">
             <label for="User_git">Foto</label>
             <input type="text" class="form-control" id="user_git" name="crew.user_git" [(ngModel)]="crew.user_git">
         </div>
-
-        <div class="row text-center ">
+ -->
+        <div class="form-group avatar"> 
+          <figure class="figure col-md-2 col-sm-3 col-xs-12"> 
+          <img class="img-rounded img-responsive" src="assets/img/profile.png" alt=""> 
+          </figure>
+           <div class="form-inline col-md-10 col-sm-9 col-xs-12"> 
+            <input type="file" class="file-uploader pull-left"> 
+            <button type="submit" class="btn btn-sm btn-default-alt pull-left">Update Image</button>
+        </div>
+         </div>
+           <div class="row text-center ">
             <div class="col-6">                        
             <button type="submit" class="btn btn-default btn-lg">Enviar</button>
             </div>
             <div class="col-6">   
-                <a href="#" class="pull-right btn btn-block btn-danger">Você já se cadastrou ?   </a>
+                <a href="#" class="pull-right btn btn-block btn-danger">Você já se cadastrou?</a>
             </div>
         </div>
 
