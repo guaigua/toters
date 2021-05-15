@@ -11,6 +11,7 @@
                   <thead>
                     <tr>
                       <th>#</th>
+                      <th hidden>id</th>
                       <th>Nome</th>
                       <th>Sobrenome</th>
                       <th>Mail</th>
@@ -24,6 +25,7 @@
                   <tbody>
                     <tr *ngFor="let teacher of toti.teachers; let i = index">
                       <th scope="row">{{ i + 1 }}</th>
+                      <td hidden>{{ teacher.id }}</td>
                       <td>{{ teacher.firstname }}</td>
                       <td>{{ teacher.lastname }}</td>
                       <td>{{ teacher.mail }}</td>
@@ -31,7 +33,7 @@
                       <td>{{ teacher.country }}</td>
                       <td>{{ teacher.urlphoto }}</td>       
                       <td>
-                        <button type="button" class="btn btn-info" (click)="onEdit(i)">Editar</button>
+                        <button type="button" class="btn btn-info"  data-toggle="modal" data-target="#teachers-form-modal" (click)="onEdit(i, teacher.id)">Editar</button>
                       </td>
                       <td>
                         <button type="button" class="btn btn-danger" (click)="onDelete(i)">Deletar</button>
@@ -48,7 +50,7 @@
           <div class="card">
             <div class="card-body">
               <div class="text-center px-xl-3">
-                <button class="btn btn-success btn-block" type="button" data-toggle="modal" data-target="#user-form-modal">Criar registro</button>
+                <button class="btn btn-success btn-block" type="button" data-toggle="modal" data-target="#teachers-form-modal" (click)="onNew()" >Criar registro</button>
               </div>
               <hr class="my-3">
               <div class="e-navlist e-navlist--active-bold">
@@ -63,7 +65,7 @@
               <hr class="my-3">
              
       <!-- Modal Create User -->
-      <div class="modal fade" role="dialog" tabindex="-1" id="user-form-modal">
+      <div class="modal fade" role="dialog" tabindex="-1" id="teachers-form-modal">
         <div class="modal-dialog modal-lg" role="document">
           <div class="modal-content">
             <div class="modal-header">
@@ -72,7 +74,7 @@
                 <span aria-hidden="true">×</span>
               </button>
             </div>
-            <app-register-view [flag]="teachers" ></app-register-view>
+            <app-register-view [flag]="teachers" [flag2]="crud" ></app-register-view>
           </div>
         </div>
       </div>

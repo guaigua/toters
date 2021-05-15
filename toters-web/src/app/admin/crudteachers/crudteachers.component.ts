@@ -21,6 +21,7 @@ class Registration {
 export class CrudteachersComponent implements OnInit {
   toti: any = {};
   teachers: string = "teachers";
+  crud: any = {};
   
   constructor(private teachersService: ApiService) {}
 
@@ -46,13 +47,9 @@ export class CrudteachersComponent implements OnInit {
     this.toti = promise;   
   }
 
-  onNew() {
-    // Initiate new registration.
-    this.regModel = new Registration();
-    // Change submitType to 'Save'.
-    this.submitType = 'Save';
-    // display registration entry section.
-    this.showNew = true;
+  onNew() { 
+    this.submitType = 'New';
+    this.crud.submitType = this.submitType;  
   }
 
   // This method associate to Save Button.
@@ -74,17 +71,11 @@ export class CrudteachersComponent implements OnInit {
   }
 
   // This method associate to Edit Button.
-  onEdit(index: number) {
-    // Assign selected table row index.
-    this.selectedRow = index;
-    // Initiate new registration.
-    this.regModel = new Registration();
-    // Retrieve selected registration from list and assign to model.
-    this.regModel = Object.assign({}, this.registrations[this.selectedRow]);
-    // Change submitType to Update.
+  onEdit(index: number, teacher_id: number ) {
+
     this.submitType = 'Update';
-    // Display registration entry section.
-    this.showNew = true;
+    this.crud.submitType = this.submitType;
+    this.crud.id = teacher_id;   
   }
 
   // This method associate to Delete Button.

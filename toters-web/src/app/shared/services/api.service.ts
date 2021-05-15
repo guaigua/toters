@@ -13,12 +13,18 @@ export class ApiService {
     const headers = new Headers();
     // headers.append('Content-Type', 'application/json');
     return this.http.get(environment.url.students + 'students/');
-  }
+  }  
 
   getTeachers() {
     const headers = new Headers();
     // headers.append('Content-Type', 'application/json');
     return this.http.get(environment.url.teachers + 'teachers/');
+  }
+
+  putTeachers(id:number) {
+    const headers = new Headers();
+    // headers.append('Content-Type', 'application/json');
+    return this.http.get(environment.url.teachers + 'teachers/' + id);
   }
 
   postTeachers(data) {
