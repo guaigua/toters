@@ -1,1 +1,11 @@
-<p>home works!</p>
+<app-header></app-header>
+
+<div class="card mt-3 ml-3" style="width: 18rem;" *ngFor="let course of toti.courses">
+    <img src="..." class="card-img-top" alt="...">
+    <div class="card-body"  >
+      <h5 class="card-title">{{ course.title }}</h5>
+      <p class="card-text">{{ course.description }}</p>
+      <a href="#" class="btn btn-primary">Cadastre-se</a>
+    </div>
+  </div>
+<app-footer></app-footer>
