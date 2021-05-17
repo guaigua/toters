@@ -11,10 +11,24 @@ body{
   border-color: #6C3D7B;
 }
 
+.btn-info {
+  color: #fff;
+  background-color: #EA743A;
+  border-color:  #EA743A;
+}
+
+
 .container, .container-fluid, .container-lg, .container-md, .container-sm, .container-xl {
     width: 100%;
     padding-right: 15px;
     padding-left: 15px;
     margin-right: auto;
     margin-left: auto;
+}
+
+
+.btn-primary  {
+  color: #fff;
+  background-color: #EA743A;
+  border-color:  #EA743A;
 }

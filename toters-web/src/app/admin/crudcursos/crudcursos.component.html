@@ -35,10 +35,10 @@
                     <td>{{ course.hours }}</td>
                     <td>{{ course.temary }}</td>
                     <td>
-                      <button type="button" class="btn btn-info" (click)="onEdit(i)">Editar</button>
+                      <button type="button" class="btn btn-info" (click)="onEdit(i)"><i class="bi bi-pencil-square"></i></button>
                     </td>
                     <td>
-                      <button type="button" class="btn btn-danger" (click)="onDelete(i)">Deletar</button>
+                      <button type="button" class="btn btn-danger" (click)="onDelete(i)"><i class="bi bi-trash-fill"></i></button>
                     </td>
                   </tr>
                 </tbody>
@@ -109,10 +109,10 @@
            
             <div class="row text-center ">
               <div class="col-6">                        
-                <button type="submit" class="btn btn-default btn-lg">Enviar</button>
+                <button type="submit" class="btn btn-default btn-lg" >Enviar</button>
               </div>
               <div class="col-6">   
-                  <a href="#" class="pull-right btn btn-block btn-danger">Você já se cadastrou?</a>
+                <a href="#" class="pull-right btn btn-primary">Cadastre-se</a>
               </div>
             </div>
             <div class="row">

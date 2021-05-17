@@ -9,15 +9,6 @@
     background-color: #f5f8fa;
 } */
 
-.navbar-laravel
-{
-    box-shadow: 0 2px 4px rgba(0,0,0,.04);
-}
-
-.navbar-brand , .nav-link, .my-form, .login-form
-{
-    font-family: Raleway, sans-serif;
-}
 
 .my-form
 {
@@ -93,3 +84,16 @@ img{
 .btn.btn-lg.btn-default.active{
     margin-left: 5px;
 }
+
+
+.btn-lg {
+    font-size: 1.25rem;
+    line-height: 1.5;
+    border-radius: .3rem;
+}
+
+.btn-primary  {
+    color: #fff;
+    background-color: #EA743A;
+    border-color:  #EA743A;
+  }

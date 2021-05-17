@@ -33,10 +33,10 @@
                       <td>{{ teacher.country }}</td>
                       <td>{{ teacher.urlphoto }}</td>       
                       <td>
-                        <button type="button" class="btn btn-info"  data-toggle="modal" data-target="#teachers-form-modal" (click)="onEdit(i, teacher.id)">Editar</button>
+                        <button type="button" class="btn btn-info"  data-toggle="modal" data-target="#teachers-form-modal" (click)="onEdit(i, teacher.id)"><i class="bi bi-pencil-square"></i></button>
                       </td>
                       <td>
-                        <button type="button" class="btn btn-danger" (click)="onDelete(i)">Deletar</button>
+                        <button type="button" class="btn btn-danger" (click)="onDelete(i)"><i class="bi bi-trash-fill"></i></button>
                       </td>
                     </tr>
                   </tbody>
