@@ -1,7 +1,5 @@
 <app-header></app-header>
 
-
-
 <div class="container-fluid">
 <div class="row flex-lg-nowrap">
   <div class="col">
@@ -47,68 +45,15 @@
               </table>
 
             </div>
-            <br>
-        
-            <div class="regentry" *ngIf="showNew">
-              <form (ngSubmit)="onSave()">
-                <div class="form-group row">
-                  <label for="firstname-input" class="col-2 col-form-label">First Name</label>
-                  <div class="col-10">
-                    <input class="form-control" type="text" [(ngModel)]="regModel.firstName" name="firstName">
-                  </div>
-                </div>
-                <div class="form-group row">
-                  <label for="lastname-input" class="col-2 col-form-label">Last Name</label>
-                  <div class="col-10">
-                    <input class="form-control" type="text" [(ngModel)]="regModel.lastName" name="lastName">
-                  </div>
-                </div>
-                <div class="form-group row">
-                  <label for="example-email-input" class="col-2 col-form-label">Mail</label>
-                  <div class="col-10">
-                    <input class="form-control" type="email" [(ngModel)]="regModel.email" name="email">
-                  </div>
-                </div>
-                <div class="form-group row">
-                  <label for="dob-input" class="col-2 col-form-label">Data do nascimento:</label>
-                  <div class="col-3 input-group">
-                    <input type="text" class="form-control" placeholder="yyyy-mm-dd" name="dob" [(ngModel)]="regModel.dob" ngbDatepicker #dob="ngbDatepicker">
-                    <button class="input-group-addon" (click)="dob.toggle()" type="button">
-                      <img src="assets/img/calendar-icon.svg" style="width: 1.2rem; height: 1rem; cursor: pointer;" />
-                    </button>
-                  </div>
-                </div>
-          
-                <div class="form-group row">
-                  <label for="example-password-input" class="col-2 col-form-label">Password</label>
-                  <div class="col-10">
-                    <input class="form-control" type="password" [(ngModel)]="regModel.password" name="password">
-                  </div>
-                </div>
-                <div class="form-group row">
-                  <label for="city-input" class="col-2 col-form-label">País</label>
-                  <div class="col-10 dropdown" ngbDropdown myDrop="ngbDropdown">
-                    <button type="button" class="btn btn-outline-primary" id="dropdownManual" name="country" ngbDropdownToggle>{{regModel.country}}</button>
-                    <div ngbDropdownMenu aria-labelledby="dropdownManual">
-                      <button type="button" class="dropdown-item" *ngFor="let country of countries" (click)="onChangeCountry(country)">{{country}}</button>
-                    </div>
-                  </div>
-                </div>
-                <button type="submit" class="btn btn-success">{{submitType}}</button>
-                <button type="submit" class="btn btn-primary" (click)="onCancel()">Cancel</button>
-              </form>
-            </div>
-
-           
           </div>
         </div>
       </div>
 
-           <div class="col-12 col-lg-3 mb-3">
+      <div class="col-12 col-lg-3 mt-5 mb-3">
         <div class="card">
           <div class="card-body">
             <div class="text-center px-xl-3">
-              <button class="btn btn-success btn-block" type="button" data-toggle="modal" data-target="#user-form-modal">Criar Curso</button>
+              <button id="btn"class="btn btn-success btn-block" type="button" data-toggle="modal" data-target="#cursos-form-modal">Criar registro</button>
             </div>
             <hr class="my-3">
             <div class="e-navlist e-navlist--active-bold">
@@ -116,98 +61,88 @@
             <hr class="my-3">
             <div>
               <div class="form-group">
-                <label>Procurar usuario:</label>
+                <label>Procurar Registro</label>
                 <div><input class="form-control w-100" type="text" placeholder="Nome" value=""></div>
               </div>
             </div>
             <hr class="my-3">
            
-    <!-- User Form Modal -->
-    <div class="modal fade" role="dialog" tabindex="-1" id="user-form-modal">
+    <!-- Create User -->
+    <div class="modal fade" role="dialog" tabindex="-1" id="cursos-form-modal">
       <div class="modal-dialog modal-lg" role="document">
         <div class="modal-content">
           <div class="modal-header">
-            <h5 class="modal-title">Criar Curso</h5>
+            <h5 class="modal-title">Criar Registro</h5>
             <button type="button" class="close" data-dismiss="modal">
               <span aria-hidden="true">×</span>
             </button>
           </div>
-          <div class="modal-body">
-            <div class="py-1">
-              <form class="form" novalidate="">
-                <div class="row">
-                  <div class="col">
-                    <div class="row">
-                      <div class="col">
-                        <div class="form-group">
-                          <label>Nome Completo</label>
-                          <input class="form-control" type="text" name="name" placeholder="John Smith" value="John Smith">
-                        </div>
-                      </div>
-                      <div class="col">
-                        <div class="form-group">
-                          <label>Data do nascimento</label>
-                          <input class="form-control" type="text" name="username" placeholder="johnny.s" value="johnny.s">
-                        </div>
-                      </div>
-                    </div>
-                    <div class="row">
-                      <div class="col">
-                        <div class="form-group">
-                          <label>Email</label>
-                          <input class="form-control" type="text" placeholder="user@example.com">
-                        </div>
-                      </div>
-                    </div>
-                    <div class="row">
-                      <div class="col mb-3">
-                        <div class="form-group">
-                          <label>Bio</label>
-                          <textarea class="form-control" rows="5" placeholder="My Bio"></textarea>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-                <div class="row">
-                  <div class="col-12 col-sm-6 mb-3">
-                    <div class="mb-2"><b>Change Password</b></div>
-                    <div class="row">
-                      <div class="col">
-                        <div class="form-group">
-                          <label>Current Password</label>
-                          <input class="form-control" type="password" placeholder="••••••">
-                        </div>
-                      </div>
-                    </div>
-                    <div class="row">
-                      <div class="col">
-                        <div class="form-group">
-                          <label>New Password</label>
-                          <input class="form-control" type="password" placeholder="••••••">
-                        </div>
-                      </div>
-                      <div class="col">
-                        <div class="form-group">
-                          <label>Confirm <span class="d-none d-xl-inline">Password</span></label>
-                          <input class="form-control" type="password" placeholder="••••••"></div>
-                      </div>
-                    </div>
-                  </div>
+          <div id="menu" class="container">                                
 
-                  </div>
-                <div class="row">
-                  <div class="col d-flex justify-content-end">
-                    <button class="btn btn-primary" type="submit">Save Changes</button>
-                  </div>
-                </div>
-              </form>
-
+          <form role="form" #courseForm="ngForm"  (ngSubmit)="onSubmit(courseForm)">
+        
+            <div class="form-group">
+                <label for="Name">Nome</label>
+                <input type="text" class="form-control" id="name" name="firstname" [(ngModel)]="crew.title">
             </div>
-          </div>
+        
+            <div class="form-group">
+                <label for="Description">Descriçao</label>
+                <input type="text" class="form-control" id="description" name="description"  [(ngModel)]="crew.description">
+            </div>
+            
+            <div class="form-group">
+                <label for="Capacity">Capacidade</label>
+                <input type="texto" class="form-control" id="capacity" name="capacity"  [(ngModel)]="crew.capacity">
+            </div>
+        
+            <div class="form-group">
+                <label for="Hours">Horas</label>
+                <input type="text" class="form-control" id="hours" name="hours"  [(ngModel)]="crew.hours">
+            </div>
+        
+           <div class="form-group">
+                <label for="Temary">Tema</label>        
+                <input type="texto" class="form-control" id="temary" name="temary"  [(ngModel)]="crew.temary">
+            </div>
+        
+           
+               <div class="row text-center ">
+                <div class="col-6">                        
+                <button type="submit" class="btn btn-default btn-lg">Enviar</button>
+                </div>
+                <div class="col-6">   
+                    <a href="#" class="pull-right btn btn-block btn-danger">Você já se cadastrou?</a>
+                </div>
+            </div>
+        
+        </form>
+        <br/>
         </div>
-      </div>
-    </div>
-  </div>
-</div>
-</div>
+        
+        </div>
+        </div>
+        </div>
+        
+        </div>
+        </div>
+        </div>
+        
+        
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+       

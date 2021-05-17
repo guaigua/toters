@@ -9,12 +9,7 @@ export class ApiService {
 
   constructor(private http:HttpClient) { }
 
-  getStudents() {
-    const headers = new Headers();
-    // headers.append('Content-Type', 'application/json');
-    return this.http.get(environment.url.students + 'students/');
-  }  
-
+  // TEACHERS
   getTeachers() {
     const headers = new Headers();
     // headers.append('Content-Type', 'application/json');
@@ -33,6 +28,13 @@ export class ApiService {
     return this.http.post(environment.url.teachers + 'teachers/', data);
   }
 
+  // STUDENTS 
+  getStudents() {
+    const headers = new Headers();
+    // headers.append('Content-Type', 'application/json');
+    return this.http.get(environment.url.students + 'students/');
+  } 
+
   postStudents(data) {
     const headers = new Headers();
     // headers.append('Content-Type', 'application/json');
@@ -40,10 +42,20 @@ export class ApiService {
     
   }
 
+  // COURSES 
+
   getCourses() {
     // const headers = new Headers();
     // headers.append('Content-Type', 'application/json');
     return this.http.get(environment.url.courses + 'courses/');   
   }
+
+  postCourses(data) {
+    const headers = new Headers();
+    // headers.append('Content-Type', 'application/json');
+    return this.http.post(environment.url.courses + 'courses/', data);
+    
+  }
+
 
 }

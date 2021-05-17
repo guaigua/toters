@@ -18,8 +18,6 @@ export class RegisterViewComponent implements OnInit {
   constructor(public crewService:ApiService) { }
 
   ngOnInit(): void {
-    
-   
   }
 
   ngOnChanges(changes:SimpleChanges) {
