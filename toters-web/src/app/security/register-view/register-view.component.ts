@@ -85,9 +85,7 @@ export class RegisterViewComponent implements OnInit {
             console.log(error);
           });  
       
-  }
-  
-
+        } 
       }
     }
   }

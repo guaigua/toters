@@ -20,6 +20,8 @@ export class CrudcursosComponent implements OnInit {
   crew: any = {};
   courses: string = "courses";
   toti: any = {};
+  data: any = {};
+  successfully: boolean = false;
 
 
   constructor(private coursesService: ApiService) {}
@@ -34,8 +36,27 @@ export class CrudcursosComponent implements OnInit {
     console.log (this.crew.courses);
   }
 
-  onSubmit(coursesService) {
-    console.log();
-  }
+  onSubmit(dataObj): void {
+   
+    this.crew = dataObj.form.value;
+    console.log(this.crew); 
+
+    
+    this.coursesService.postCourses(this.crew)
+    .subscribe(   
+      (data)=>{
+        this.data = data;
+        this.successfully = true;
+        this.crew = {};         
+        console.log("Post con éxito", this.data);
+      
+      },
+      (error)=>{ 
+        console.log(error);
+
+      });  
+   
+      
+    }
 
 }
