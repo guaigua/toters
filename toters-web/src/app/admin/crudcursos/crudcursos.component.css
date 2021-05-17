@@ -4,8 +4,7 @@ body{
 }
 
 
-
-.btn-success, .btn-block, .btn-default {
+.btn-block, .btn-default {
   color: #fff;
   background-color: #6C3D7B;
   border-color: #6C3D7B;
@@ -32,3 +31,19 @@ body{
   background-color: #EA743A;
   border-color:  #EA743A;
 }
+
+
+.btn-success:hover {
+  color: #fff;
+  background-color: #6C3D7B;
+  border-color: #6C3D7B;
+}
+
+.btn-success:active {
+  color: #fff;
+  background-color: #6C3D7B;
+  border-color: #6C3D7B;
+  transition: color .15s ease-in-out,background-color .15s ease-in-out,border-color .15s ease-in-out,box-shadow .15s ease-in-out;
+
+}
+
