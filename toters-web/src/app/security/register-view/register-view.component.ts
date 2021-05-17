@@ -39,7 +39,8 @@ export class RegisterViewComponent implements OnInit {
         (data)=>{
           this.data = data;
           this.crew = this.data.teachersList;
-          this.successfully = true;         
+          this.successfully = true;
+          this.crew = {};
           console.log("Post con éxito", this.data);
         },
         (error)=>{ 
