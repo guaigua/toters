@@ -18,9 +18,14 @@ class Registration {
   styleUrls: ['./crudstudents.component.css']
 })
 export class CrudstudentsComponent implements OnInit {
-
   toti: any = {};
   students: string = "students";
+  crud: any = {};
+
+
+  crew: any = {};
+  data: any = {};
+  successfully: boolean = false;
 
   constructor(private studentsService: ApiService) {}
 
@@ -46,13 +51,9 @@ export class CrudstudentsComponent implements OnInit {
     this.toti = promise;
   }
 
-  onNew() {
-    // Initiate new registration.
-    this.regModel = new Registration();
-    // Change submitType to 'Save'.
-    this.submitType = 'Save';
-    // display registration entry section.
-    this.showNew = true;
+  onNew() { 
+    this.submitType = 'New';
+    this.crud.submitType = this.submitType;  
   }
 
   // This method associate to Save Button.
@@ -73,24 +74,32 @@ export class CrudstudentsComponent implements OnInit {
     this.showNew = false;
   }
 
-  // This method associate to Edit Button.
-  onEdit(index: number) {
-    // Assign selected table row index.
-    this.selectedRow = index;
-    // Initiate new registration.
-    this.regModel = new Registration();
-    // Retrieve selected registration from list and assign to model.
-    this.regModel = Object.assign({}, this.registrations[this.selectedRow]);
-    // Change submitType to Update.
-    this.submitType = 'Update';
-    // Display registration entry section.
-    this.showNew = true;
-  }
+// This method associate to Edit Button.
+onEdit(index: number, student: any ) {
 
+  this.submitType = 'Update';
+  this.crud.submitType = this.submitType;
+  this.crew = student; 
+  console.log(this.crew)   ;
+}
+
+ 
   // This method associate to Delete Button.
-  onDelete(index: number) {
+  onDelete(index: number, student: any) {
     // Delete the corresponding registration entry from the list.
     this.registrations.splice(index, 1);
+    this.crew = student;
+    this.studentsService.removeStudents(this.crew.id)
+    .subscribe(   
+      (data)=>{
+        this.data = data;
+        this.successfully = true;         
+        console.log("Eliminado con éxito", this.data);
+        this.getStudents();
+      },
+      (error)=>{ 
+        console.log(error);
+      }); 
   }
 
   // This method associate toCancel Button.
@@ -104,7 +113,33 @@ export class CrudstudentsComponent implements OnInit {
     // Assign corresponding selected country to model.
     this.regModel.country = country;
   }
-
-}
-
-
+  onSubmit(dataObj): void {
+    
+    this.crew = dataObj.form.value;
+    console.log(this.crew);
+    this.studentsService.putStudents(this.crew, this.crew.id)
+    .subscribe(   
+      (data)=>{
+        this.data = data;
+        this.successfully = true;         
+        console.log("Post con éxito", this.data);
+      },
+      (error)=>{ 
+        console.log(error);
+      }); 
+    
+    this.studentsService.postStudents(this.crew)
+    .subscribe(   
+      (data)=>{
+        this.data = data;
+        this.successfully = true;
+        this.crew = {};         
+        console.log("Post con éxito", this.data);
+        this.getStudents();
+      
+      },
+      (error)=>{ 
+        console.log(error);
+      });  
+    } 
+  }

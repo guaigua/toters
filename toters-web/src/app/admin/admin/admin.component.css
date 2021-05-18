@@ -43,3 +43,23 @@
     font-weight: 600;
 }
 
+#nav{
+    color: #495057;
+    background-color: transparent;
+    border-color: transparent transparent #f3f3f3;
+    border-bottom: 3px solid !important;
+    font-size: 16px;
+    font-weight: bold;
+}
+
+.nav-tabs {
+    border-bottom: 1px solid #dee2e6;
+}
+
+.nav-link[_ngcontent-dyp-c49] {
+    color: #495057;
+    border-color: #dee2e6 #dee2e6 #fff;
+    margin-bottom: 5px;
+}
+
+                                                                                                                                                                                                                                                                                    

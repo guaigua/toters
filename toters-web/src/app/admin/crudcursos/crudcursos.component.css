@@ -47,3 +47,20 @@ body{
 
 }
 
+.nav-link{
+    color: #495057;
+    border-color: #dee2e6 #dee2e6 #fff;
+    margin-bottom: 5px;
+}
+
+.row {
+  display: flex;
+  flex-wrap: wrap;
+  margin-right: -15px;
+  margin-left: -15px;
+  margin-top: 1px;
+}
+
+.nav-item{
+  margin-top: 4px;
+}

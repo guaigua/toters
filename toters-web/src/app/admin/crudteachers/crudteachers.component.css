@@ -1,13 +1,15 @@
 
-.btn-success {
+.btn-success, .btn-default {
     color: #fff;
     background-color: #6C3D7B;
     border-color: #6C3D7B;
 }
 
 
-.btn-info {
+.btn-info, .btn-primary {
     color: #fff;
     background-color: #EA743A;
     border-color:  #EA743A;
   }
+
+

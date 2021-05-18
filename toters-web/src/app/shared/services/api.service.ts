@@ -48,6 +48,18 @@ export class ApiService {
     
   }
 
+  putStudents(data, id:number) {
+    const headers = new Headers();
+    // headers.append('Content-Type', 'application/json');
+    return this.http.put(environment.url.students + 'students/' + id, data);
+  }
+
+  removeStudents(id:number) {
+    const headers = new Headers();
+    // headers.append('Content-Type', 'application/json');
+    return this.http.delete(environment.url.students + 'students/' + id);
+  }
+
   // COURSES 
 
   getCourses() {
@@ -62,6 +74,16 @@ export class ApiService {
     return this.http.post(environment.url.courses + 'courses/', data);
     
   }
+  putCourses(data, id:number) {
+    const headers = new Headers();
+    // headers.append('Content-Type', 'application/json');
+    return this.http.put(environment.url.courses + 'courses/' + id, data);
+  }
 
+  removeCourses(id:number) {
+    const headers = new Headers();
+    // headers.append('Content-Type', 'application/json');
+    return this.http.delete(environment.url.courses + 'courses/' + id);
+  }
 
 }

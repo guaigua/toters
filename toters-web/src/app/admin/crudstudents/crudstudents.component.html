@@ -31,10 +31,9 @@
                       <td>{{ student.country }}</td>
                       <td>{{ student.urlphoto }}</td>       
                       <td>
-                        <button type="button" class="btn btn-info" (click)="onEdit(i)"><i class="bi bi-pencil-square"></i></button>
-                      </td>
+                        <button type="button" class="btn btn-info" data-toggle="modal" data-target="#students-form-modal" (click)="onEdit(i, student)"><i class="bi bi-pencil-square"></i></button>                      </td>
                       <td>
-                        <button type="button" class="btn btn-danger" (click)="onDelete(i)"><i class="bi bi-trash-fill"></i></button>
+                        <button type="button" class="btn btn-danger" (click)="onDelete(i, student)"><i class="bi bi-trash-fill"></i></button>                      
                       </td>
                     </tr>
                   </tbody>
@@ -48,7 +47,7 @@
           <div class="card">
             <div class="card-body">
               <div class="text-center px-xl-3">
-                <button id="btn"class="btn btn-success btn-block" type="button" data-toggle="modal" data-target="#students-form-modal">Criar registro</button>
+                <button id="btn"class="btn btn-success btn-block" type="button" data-toggle="modal" data-target="#students-form-modal">Criar Aluno</button>
               </div>
               <hr class="my-3">
               <div class="e-navlist e-navlist--active-bold">
@@ -72,12 +71,63 @@
                 <span aria-hidden="true">×</span>
               </button>
             </div>
-            <app-register-view [flag]="students" ></app-register-view>
+            <div id="menu" class="container">                                
+              <form role="form" #crudForm="ngForm"  (ngSubmit)="onSubmit(crudForm)">
+                  <input hidden type="text" class="form-control" id="id" name="id" [(ngModel)]="crew.id">
+                  <div class="form-group">
+                      <label for="Name">Nome</label>
+                      <input type="text" class="form-control" id="name" name="firstname" [(ngModel)]="crew.firstname">
+                  </div>          
+                  <div class="form-group">
+                      <label for="Lastname">Sobrenome</label>
+                      <input type="text" class="form-control" id="lastname" name="lastname"  [(ngModel)]="crew.lastname">
+                  </div>                  
+                  <div class="form-group">
+                      <label for="Mail">Correo Electronico:</label>
+                      <input type="email" class="form-control" id="mail" name="mail"  [(ngModel)]="crew.mail">
+                  </div>          
+                  <div class="form-group">
+                      <label for="Country">País:</label>
+                      <input type="text" class="form-control" id="country" name="country"  [(ngModel)]="crew.country">
+                  </div>
+
+                 <div class="form-group">
+                      <label for="Birth">Data do nascimento :</label>        
+                      <input type="date" class="form-control" id="birth" name="birth"  [(ngModel)]="crew.birth">
+                  </div>
+
+                  <div class="form-group">
+                      <label for="User_git">Foto</label>
+                      <input type="text" class="form-control" id="user_git" name="user_git" [(ngModel)]="crew.user_git">
+                  </div>           
+                  <!-- <div class="form-group avatar"> 
+                    <figure class="figure col-md-2 col-sm-3 col-xs-12"> 
+                    <img class="img-rounded img-responsive" src="assets/img/profile.png" alt=""> 
+                    </figure>
+                     <div class="form-inline col-md-10 col-sm-9 col-xs-12"> 
+                      <input type="file" class="file-uploader pull-left"> 
+                      <button type="submit" class="btn btn-sm btn-default-alt pull-left">Update Image</button>
+                  </div> -->
+                   <!-- </div> -->
+                  <div class="row text-center ">
+                      <div class="col-6">                        
+                          <button type="submit" class="btn btn-default btn-lg" >Enviar</button>
+                      </div> 
+                      <div class="col-6">   
+                        <a href="#" class="pull-right btn btn-primary" data-dismiss="modal" >Fechar</a>
+                    </div>                              
+                  </div>
+                  <div *ngIf="successfully" class="row text-center ">
+                      <div class="alert alert-success" role="alert">
+                          Aluno Registrado!
+                      </div>
+                  </div>          
+              </form>
+              <br/>
+            </div>
           </div>
         </div>
       </div>
-
     </div>
   </div>
   </div>
-  

@@ -55,8 +55,6 @@ export class CrudteachersComponent implements OnInit {
     this.submitType = 'New';
     this.crud.submitType = this.submitType;  
   }
-
-  
   
   // This method associate to Save Button.
   onSave() {
@@ -64,7 +62,6 @@ export class CrudteachersComponent implements OnInit {
       // Push registration model object into registration list.
       this.registrations.push(this.regModel);
     } else {
-
 
       // Update the existing properties values based on model.
       this.registrations[this.selectedRow].firstName = this.regModel.firstName;
@@ -77,7 +74,6 @@ export class CrudteachersComponent implements OnInit {
     // Hide registration entry section.
     this.showNew = false;
   }
-
   // This method associate to Edit Button.
   onEdit(index: number, teacher: any ) {
 
@@ -117,7 +113,6 @@ export class CrudteachersComponent implements OnInit {
     this.regModel.country = country;
   }
   onSubmit(dataObj): void {
-    
     this.crew = dataObj.form.value;
     console.log(this.crew);
     this.teachersService.putTeachers(this.crew, this.crew.id)
@@ -130,7 +125,6 @@ export class CrudteachersComponent implements OnInit {
       (error)=>{ 
         console.log(error);
       }); 
-
     
     this.teachersService.postTeachers(this.crew)
     .subscribe(   
@@ -140,17 +134,9 @@ export class CrudteachersComponent implements OnInit {
         this.crew = {};         
         console.log("Post con éxito", this.data);
         this.getTeachers();
-
-      
       },
       (error)=>{ 
         console.log(error);
-
       });  
-   
-
-
- 
-
-}
-}
+    }
+  }
