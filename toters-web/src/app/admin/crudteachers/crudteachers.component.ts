@@ -77,11 +77,11 @@ export class CrudteachersComponent implements OnInit {
   // This method associate to Edit Button.
   onEdit(index: number, teacher: any ) {
 
-    this.submitType = 'Update';
+    this.submitType = 'update';
     this.crud.submitType = this.submitType;
     this.crew = teacher; 
     console.log(this.crew);
-    this.crew = {};
+
   }
 
   // This method associate to Delete Button.
@@ -96,7 +96,7 @@ export class CrudteachersComponent implements OnInit {
         this.successfully = true;         
         console.log("Eliminado con éxito", this.data);
         this.getTeachers();
-        this.crew = {};
+     
       },
       (error)=>{ 
         console.log(error);
@@ -117,28 +117,33 @@ export class CrudteachersComponent implements OnInit {
   onSubmit(dataObj): void {
     this.crew = dataObj.form.value;
     console.log(this.crew);
-    this.teachersService.putTeachers(this.crew, this.crew.id)
-    .subscribe(   
-      (data)=>{
-        this.data = data;
-        this.successfully = true;         
-        console.log("Post con éxito", this.data);
-      },
-      (error)=>{ 
-        console.log(error);
-      }); 
-    
-    this.teachersService.postTeachers(this.crew)
-    .subscribe(   
-      (data)=>{
-        this.data = data;
-        this.successfully = true;
-        this.crew = {};         
-        console.log("Post con éxito", this.data);
-        this.getTeachers();
-      },
-      (error)=>{ 
-        console.log(error);
-      });  
+    if (this.submitType == 'update') {
+      this.teachersService.putTeachers(this.crew, this.crew.id)
+      .subscribe(   
+        (data)=>{
+          this.data = data;
+          this.successfully = true;         
+          console.log("Put con éxito", this.data);
+          this.getTeachers();
+          this.crew = {};
+        },
+        (error)=>{ 
+          console.log(error);
+        }); 
+      } else {
+        this.teachersService.postTeachers(this.crew)
+        .subscribe(   
+          (data)=>{
+            this.data = data;
+            this.successfully = true;
+            this.crew = {};         
+            console.log("Post con éxito", this.data);
+            this.getTeachers();
+            this.crew = {};
+          },
+          (error)=>{ 
+            console.log(error);
+          });  
+        }
     }
   }

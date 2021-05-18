@@ -117,29 +117,35 @@ onEdit(index: number, student: any ) {
     
     this.crew = dataObj.form.value;
     console.log(this.crew);
-    this.studentsService.putStudents(this.crew, this.crew.id)
-    .subscribe(   
-      (data)=>{
-        this.data = data;
-        this.successfully = true;         
-        console.log("Post con éxito", this.data);
-      },
-      (error)=>{ 
-        console.log(error);
-      }); 
-    
-    this.studentsService.postStudents(this.crew)
-    .subscribe(   
-      (data)=>{
-        this.data = data;
-        this.successfully = true;
-        this.crew = {};         
-        console.log("Post con éxito", this.data);
-        this.getStudents();
-      
-      },
-      (error)=>{ 
-        console.log(error);
-      });  
+    if (this.submitType == 'update') {
+      this.studentsService.putStudents(this.crew, this.crew.id)
+      .subscribe(   
+        (data)=>{
+          this.data = data;
+          this.successfully = true;         
+          console.log("Put con éxito", this.data);
+          this.getStudents();
+          this.crew = {};
+        },
+        (error)=>{ 
+          console.log(error);
+        }); 
+      } else {
+      this.studentsService.postStudents(this.crew)
+      .subscribe(   
+        (data)=>{
+          this.data = data;
+          this.successfully = true;
+          setTimeout(()=>{
+            this.successfully = false;
+          }, 5000);                
+          console.log("Post con éxito", this.data);
+          this.getStudents();
+          this.crew = {};         
+        },
+        (error)=>{ 
+          console.log(error);
+        }); 
+      } 
     } 
   }

@@ -105,28 +105,32 @@ export class CrudcursosComponent implements OnInit {
   onSubmit(dataObj): void {
     this.crew = dataObj.form.value;
     console.log(this.crew);
-    this.coursesService.putCourses(this.crew, this.crew.id)
-    .subscribe(   
-      (data)=>{
-        this.data = data;
-        this.successfully = true;         
-        console.log("Post con éxito", this.data);
-      },
-      (error)=>{ 
-        console.log(error);
-      }); 
-    
-    this.coursesService.postCourses(this.crew)
-    .subscribe(   
-      (data)=>{
-        this.data = data;
-        this.successfully = true;
-        this.crew = {};         
-        console.log("Post con éxito", this.data);
-        this.getCourses();
-      },
-      (error)=>{ 
-        console.log(error);
-      });  
+    if (this.submitType == 'update') {
+      this.coursesService.putCourses(this.crew, this.crew.id)
+      .subscribe(   
+        (data)=>{
+          this.data = data;
+          this.successfully = true;         
+          console.log("Put con éxito", this.data);
+          this.getCourses;
+          this.crew = {};
+        },
+        (error)=>{ 
+          console.log(error);
+        }); 
+      } else {
+      this.coursesService.postCourses(this.crew)
+      .subscribe(   
+        (data)=>{
+          this.data = data;
+          this.successfully = true;        
+          console.log("Post con éxito", this.data);
+          this.getCourses();
+          this.crew = {};
+        },
+        (error)=>{ 
+          console.log(error);
+        }); 
+      } 
     }
   }
