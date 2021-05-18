@@ -3,8 +3,8 @@
 .col_white_amrc { color:#FFF;}
 footer { width:100%; background-color:#6C3D7B; min-height:250px; padding:10px 0px 25px 0px ;}
 .pt2 { padding-top:40px ; margin-bottom:20px ;}
-footer p { font-size:13px; color:#CCC; padding-bottom:0px; margin-bottom:8px;}
-.mb10 { padding-bottom:15px ;}
+footer p { font-size:16px; color:#CCC; padding-bottom:0px; margin-bottom:8px;}
+.mb10 { padding-bottom:10px ;}
 .footer_ul_amrc { margin:0px ; list-style-type:none ; font-size:18px; padding:0px 0px 10px 0px ; }
 .footer_ul_amrc li {padding:0px 0px 5px 0px;}
 .footer_ul_amrc li a{ color:#CCC;}
@@ -17,7 +17,7 @@ footer p { font-size:13px; color:#CCC; padding-bottom:0px; margin-bottom:8px;}
 .footer_ul2_amrc li a:hover { text-decoration:none;}
 .footer_ul2_amrc li i { margin-top:5px;}
 
-.bottom_border { border-bottom:1px solid #323f45; padding-bottom:20px;}
+.bottom_border { border-bottom:1px solid white; padding-bottom:20px;}
 .foote_bottom_ul_amrc {
 	list-style-type:none;
 	padding:0px;
@@ -36,4 +36,15 @@ footer p { font-size:13px; color:#CCC; padding-bottom:0px; margin-bottom:8px;}
 
 .icon1{
 	width: 35px;
+}
+
+a {
+    color: white;
+    text-decoration: none;
+    background-color: transparent;
+	font-size: 16px;
+}
+
+.headin5_amrc { 
+margin-bottom: 5px;
 }
