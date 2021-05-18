@@ -23,7 +23,11 @@ export class CrudteachersComponent implements OnInit {
   teachers: string = "teachers";
   crud: any = {};
   
-  constructor(private teachersService: ApiService) {}
+  crew: any = {};
+  data: any = {};
+  successfully: boolean = false;
+  
+  constructor(private teachersService: ApiService,) {}
 
     // It maintains list of Registrations
     registrations: Registration[] = [];
@@ -38,7 +42,7 @@ export class CrudteachersComponent implements OnInit {
     // It maintains Array of countries.
     countries: string[] = ['US', 'UK', 'India', 'UAE'];
 
-  ngOnInit(): void {
+  ngOnInit(): void {    
     this.getTeachers();
   }
 
@@ -71,11 +75,12 @@ export class CrudteachersComponent implements OnInit {
   }
 
   // This method associate to Edit Button.
-  onEdit(index: number, teacher_id: number ) {
+  onEdit(index: number, teacher: any ) {
 
     this.submitType = 'Update';
     this.crud.submitType = this.submitType;
-    this.crud.id = teacher_id;   
+    this.crew = teacher; 
+    console.log(this.crew)   ;
   }
 
   // This method associate to Delete Button.
@@ -95,6 +100,24 @@ export class CrudteachersComponent implements OnInit {
     // Assign corresponding selected country to model.
     this.regModel.country = country;
   }
+  onSubmit(dataObj): void {
+    
+    this.crew = dataObj.form.value;
+    console.log(this.crew);
+    this.teachersService.putTeachers(this.crew, this.crew.id)
+    .subscribe(   
+      (data)=>{
+        this.data = data;
+        this.successfully = true;         
+        console.log("Post con éxito", this.data);
+      },
+      (error)=>{ 
+        console.log(error);
+      }); 
+  }
+  
+
+ 
 
 }
 

@@ -1,4 +1,4 @@
-import { Component, Input, OnInit, SimpleChanges } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { ApiService } from 'src/app/shared/services/api.service';
 
 @Component({
@@ -18,36 +18,7 @@ export class RegisterViewComponent implements OnInit {
   constructor(public crewService:ApiService) { }
 
   ngOnInit(): void {
-  }
-
-  ngOnChanges(changes:SimpleChanges) {
-    console.log(this.flag2);
-    var tabInValue = changes['flag2'];
-    console.log('Aqui', this.crew);
-    if (tabInValue.currentValue?.submitType == 'Update') {    
-       this.getTeacher();
-       console.log('Aqui2', this.crew);
-    } 
-  }
-
-
-
-  public getTeacher(){
-    if( this.flag2.submitType == "update") {
-      this.crewService.putTeachers(this.flag2.id)
-      .subscribe(   
-        (data)=>{
-          this.data = data;
-          this.crew = this.data.teachersList;
-          this.successfully = true;
-          this.crew = {};
-          console.log("Post con éxito", this.data);
-        },
-        (error)=>{ 
-          console.log(error);
-        });
-
-    }
+    
   }
 
   onSubmit(dataObj): void {

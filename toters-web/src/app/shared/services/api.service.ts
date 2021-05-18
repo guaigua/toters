@@ -16,10 +16,10 @@ export class ApiService {
     return this.http.get(environment.url.teachers + 'teachers/');
   }
 
-  putTeachers(id:number) {
+  putTeachers(data, id:number) {
     const headers = new Headers();
     // headers.append('Content-Type', 'application/json');
-    return this.http.get(environment.url.teachers + 'teachers/' + id);
+    return this.http.get(environment.url.teachers + 'teachers/' + id, data);
   }
 
   postTeachers(data) {
