@@ -80,7 +80,8 @@ export class CrudteachersComponent implements OnInit {
     this.submitType = 'Update';
     this.crud.submitType = this.submitType;
     this.crew = teacher; 
-    console.log(this.crew)   ;
+    console.log(this.crew);
+    this.crew = {};
   }
 
   // This method associate to Delete Button.
@@ -95,6 +96,7 @@ export class CrudteachersComponent implements OnInit {
         this.successfully = true;         
         console.log("Eliminado con éxito", this.data);
         this.getTeachers();
+        this.crew = {};
       },
       (error)=>{ 
         console.log(error);
