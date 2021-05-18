@@ -49,6 +49,8 @@ export class CrudcursosComponent implements OnInit {
         this.successfully = true;
         this.crew = {};         
         console.log("Post con éxito", this.data);
+        this.getCourses();
+
       
       },
       (error)=>{ 

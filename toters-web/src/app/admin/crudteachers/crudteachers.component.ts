@@ -56,12 +56,16 @@ export class CrudteachersComponent implements OnInit {
     this.crud.submitType = this.submitType;  
   }
 
+  
+  
   // This method associate to Save Button.
   onSave() {
     if (this.submitType === 'Save') {
       // Push registration model object into registration list.
       this.registrations.push(this.regModel);
     } else {
+
+
       // Update the existing properties values based on model.
       this.registrations[this.selectedRow].firstName = this.regModel.firstName;
       this.registrations[this.selectedRow].lastName = this.regModel.lastName;
@@ -126,10 +130,27 @@ export class CrudteachersComponent implements OnInit {
       (error)=>{ 
         console.log(error);
       }); 
-  }
-  
+
+    
+    this.teachersService.postTeachers(this.crew)
+    .subscribe(   
+      (data)=>{
+        this.data = data;
+        this.successfully = true;
+        this.crew = {};         
+        console.log("Post con éxito", this.data);
+        this.getTeachers();
+
+      
+      },
+      (error)=>{ 
+        console.log(error);
+
+      });  
+   
+
 
  
 
 }
-
+}
