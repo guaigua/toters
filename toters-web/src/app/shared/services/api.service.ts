@@ -19,7 +19,13 @@ export class ApiService {
   putTeachers(data, id:number) {
     const headers = new Headers();
     // headers.append('Content-Type', 'application/json');
-    return this.http.get(environment.url.teachers + 'teachers/' + id, data);
+    return this.http.put(environment.url.teachers + 'teachers/' + id, data);
+  }
+
+  removeTeachers(id:number) {
+    const headers = new Headers();
+    // headers.append('Content-Type', 'application/json');
+    return this.http.delete(environment.url.teachers + 'teachers/' + id);
   }
 
   postTeachers(data) {

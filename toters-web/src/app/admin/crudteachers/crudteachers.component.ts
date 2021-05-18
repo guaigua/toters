@@ -84,9 +84,21 @@ export class CrudteachersComponent implements OnInit {
   }
 
   // This method associate to Delete Button.
-  onDelete(index: number) {
+  onDelete(index: number, teacher: any) {
     // Delete the corresponding registration entry from the list.
     this.registrations.splice(index, 1);
+    this.crew = teacher;
+    this.teachersService.removeTeachers(this.crew.id)
+    .subscribe(   
+      (data)=>{
+        this.data = data;
+        this.successfully = true;         
+        console.log("Eliminado con éxito", this.data);
+        this.getTeachers();
+      },
+      (error)=>{ 
+        console.log(error);
+      }); 
   }
 
   // This method associate toCancel Button.
