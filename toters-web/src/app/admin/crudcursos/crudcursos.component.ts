@@ -7,7 +7,6 @@ class Registration {
     public description: string = '',
     public capacity: string = '',
     public hours: string = '',
-    public temary: string = '',
   ) {}
 }
 
@@ -65,7 +64,6 @@ export class CrudcursosComponent implements OnInit {
     this.registrations[this.selectedRow].description = this.regModel.description;
     this.registrations[this.selectedRow].capacity = this.regModel.capacity;
     this.registrations[this.selectedRow].hours = this.regModel.hours
-    this.registrations[this.selectedRow].temary = this.regModel.temary;
   }
   // Hide registration entry section.
   this.showNew = false;

@@ -31,10 +31,7 @@ router.post('/courses', async (req, res) => {
     if (!req.body.hours){
        errors.push("Hora não enviada");
     }
-    if (!req.body.temary){                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                  
-        errors.push("Tema não enviado");
-    }
-   
+  
     if (errors.length){
         res.status(400).json({"error":errors.join(",")});
         return;
@@ -44,7 +41,6 @@ router.post('/courses', async (req, res) => {
         description: req.body.description,
         capacity: req.body.capacity,                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    
         hours: req.body.hours,
-        temary: req.body.temary,
     })
 
 
@@ -65,7 +61,6 @@ router.put('/courses/:id', async (req, res) =>{
             description: body.description,
             capacity: body.capacity,
             hours: body.hours,
-            temary: body.temary,
         });        
         res.send({ action: 'Courses Modify ', coursesList:coursesList })
     } catch (e) {
