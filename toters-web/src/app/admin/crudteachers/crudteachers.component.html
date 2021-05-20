@@ -75,7 +75,7 @@
               </button>
             </div>
             <div id="menu" class="container">                                
-              <form role="form" #crudForm="ngForm"  (ngSubmit)="onSubmit(crudForm)">
+              <form role="form" #crudForm="ngForm"  (ngSubmit)="onSubmit(crudForm)" enctype="multipart/form-data">
                   <input hidden type="text" class="form-control" id="id" name="id" [(ngModel)]="crew.id">
                   <div class="form-group">
                       <label for="Name">Nome</label>
@@ -99,19 +99,24 @@
                       <input type="date" class="form-control" id="birth" name="birth"  [(ngModel)]="crew.birth">
                   </div>
           
-                  <div class="form-group">
+                  <!-- <div class="form-group">
                       <label for="User_git">Foto</label>
                       <input type="text" class="form-control" id="user_git" name="user_git" [(ngModel)]="crew.user_git">
-                  </div>           
-                  <!-- <div class="form-group avatar"> 
+                  </div> -->
+
+                  <!-- <button type="button" class="btn btn-primary ml-2"  name="urlphoto" ngDefaultControl  [(ngModel)]="crew.urlphoto" (click)="fileInput.click()">
+                    <i class="bi bi-camera-fill"></i>
+                  </button>  
+                    <input hidden  #fileInput type="file" accept="image/*"  (change)="onSelectFile($event)" >          -->
+                  <div class="form-group avatar"> 
                     <figure class="figure col-md-2 col-sm-3 col-xs-12"> 
                     <img class="img-rounded img-responsive" src="assets/img/profile.png" alt=""> 
                     </figure>
                      <div class="form-inline col-md-10 col-sm-9 col-xs-12"> 
-                      <input type="file" class="file-uploader pull-left"> 
+                      <input type="file" class="file-uploader pull-left" name="user_git" [(ngModel)]="crew.user_git"> 
                       <button type="submit" class="btn btn-sm btn-default-alt pull-left">Update Image</button>
-                  </div> -->
-                   <!-- </div> -->
+                    </div>
+                   </div> 
                   <div class="row text-center ">
                       <div class="col-6">                        
                           <button type="submit" class="btn btn-default btn-lg" >Enviar</button>

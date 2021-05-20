@@ -1,6 +1,8 @@
 var express = require('express');
 var router = express.Router();
 
+const imageController = require("../controllers/image");
+
 const { teachers } = require('../db');
 
 // List teachers
@@ -17,7 +19,8 @@ router.get('/teachers/:id', async  (req, res) => {
 })
 
 // Create one teacher
-router.post('/teachers', async (req, res) => { 
+router.post('/teachers', imageController.uploadImg,  async (req, res) => { 
+    
     var errors=[]
     if (!req.body.firstname){
         errors.push("Nome não enviado");
@@ -47,11 +50,8 @@ router.post('/teachers', async (req, res) => {
         mail: req.body.mail,
         birth: req.body.birth,
         country: req.body.country,
-        urlphoto: req.body.urlphoto,
+        urlphoto: req.file.path
     })
-
-
-    console.log(teachersCreate);
  
     res.json({ action: 'Teachers Create ', teachersCreate})
 })

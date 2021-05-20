@@ -1,16 +1,16 @@
 import { Component, OnInit } from '@angular/core';
 import { ApiService } from 'src/app/shared/services/api.service';
 
-class Registration {
-  constructor(
-    public firstName: string = '',
-    public lastName: string = '',
-    public dob: string = '',
-    public email: string = '',
-    public password: string = '',
-    public country: string = 'Select country'
-  ) {}
-}
+// class Registration {
+//   constructor(
+//     public firstName: string = '',
+//     public lastName: string = '',
+//     public dob: string = '',
+//     public email: string = '',
+//     public password: string = '',
+//     public country: string = 'Select country'
+//   ) {}
+// }
 
 
 @Component({
@@ -23,16 +23,24 @@ export class CrudteachersComponent implements OnInit {
   teachers: string = "teachers";
   crud: any = {};
   
-  crew: any = {};
+  crew: any = {
+    birth: "",​
+    country: "",
+    firstname: "",
+    lastname: "",​
+    mail: "",
+    urlPhoto: File = null,
+  };
   data: any = {};
   successfully: boolean = false;
+  flag: any;
   
   constructor(private teachersService: ApiService,) {}
 
-    // It maintains list of Registrations
-    registrations: Registration[] = [];
-    // It maintains registration Model
-    regModel: Registration;
+    // // It maintains list of Registrations
+    // registrations: Registration[] = [];
+    // // It maintains registration Model
+    // regModel: Registration;
     // It maintains registration form display status. By default it will be false.
     showNew: Boolean = false;
     // It will be either 'Save' or 'Update' based on operation.
@@ -60,16 +68,16 @@ export class CrudteachersComponent implements OnInit {
   onSave() {
     if (this.submitType === 'Save') {
       // Push registration model object into registration list.
-      this.registrations.push(this.regModel);
+      // this.registrations.push(this.regModel);
     } else {
 
-      // Update the existing properties values based on model.
-      this.registrations[this.selectedRow].firstName = this.regModel.firstName;
-      this.registrations[this.selectedRow].lastName = this.regModel.lastName;
-      this.registrations[this.selectedRow].dob = this.regModel.dob;
-      this.registrations[this.selectedRow].email = this.regModel.email;
-      this.registrations[this.selectedRow].password = this.regModel.password;
-      this.registrations[this.selectedRow].country = this.regModel.country;
+      // // Update the existing properties values based on model.
+      // this.registrations[this.selectedRow].firstName = this.regModel.firstName;
+      // this.registrations[this.selectedRow].lastName = this.regModel.lastName;
+      // this.registrations[this.selectedRow].dob = this.regModel.dob;
+      // this.registrations[this.selectedRow].email = this.regModel.email;
+      // this.registrations[this.selectedRow].password = this.regModel.password;
+      // this.registrations[this.selectedRow].country = this.regModel.country;
     }
     // Hide registration entry section.
     this.showNew = false;
@@ -87,7 +95,7 @@ export class CrudteachersComponent implements OnInit {
   // This method associate to Delete Button.
   onDelete(index: number, teacher: any) {
     // Delete the corresponding registration entry from the list.
-    this.registrations.splice(index, 1);
+    // this.registrations.splice(index, 1);
     this.crew = teacher;
     this.teachersService.removeTeachers(this.crew.id)
     .subscribe(   
@@ -112,7 +120,7 @@ export class CrudteachersComponent implements OnInit {
   // This method associate to Bootstrap dropdown selection change.
   onChangeCountry(country: string) {
     // Assign corresponding selected country to model.
-    this.regModel.country = country;
+    // this.regModel.country = country;
   }
   onSubmit(dataObj): void {
     this.crew = dataObj.form.value;
@@ -145,5 +153,11 @@ export class CrudteachersComponent implements OnInit {
             console.log(error);
           });  
         }
+    }
+
+    onSelectFile(event) {
+
+      this.flag = event.target.name;
+      console.log(this.flag);
     }
   }
