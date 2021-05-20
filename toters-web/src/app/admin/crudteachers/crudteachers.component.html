@@ -75,7 +75,7 @@
               </button>
             </div>
             <div id="menu" class="container">                                
-              <form role="form" #crudForm="ngForm"  (ngSubmit)="onSubmit(crudForm)" enctype="multipart/form-data">
+              <form role="form" #crudForm="ngForm"  (ngSubmit)="onSubmit(crudForm)" >
                   <input hidden type="text" class="form-control" id="id" name="id" [(ngModel)]="crew.id">
                   <div class="form-group">
                       <label for="Name">Nome</label>
@@ -108,12 +108,18 @@
                     <i class="bi bi-camera-fill"></i>
                   </button>  
                     <input hidden  #fileInput type="file" accept="image/*"  (change)="onSelectFile($event)" >          -->
+
+                    <!-- <button type="button"  class="btn btn-primary ml-2" aria-label="Select photos" (click)="fileInput.click()">
+                      folder
+                    </button>  
+                      <input hidden (change)="onSelectFile($event)" #fileInput type="file" mat-icon-button name="first day"> -->
+
                   <div class="form-group avatar"> 
                     <figure class="figure col-md-2 col-sm-3 col-xs-12"> 
                     <img class="img-rounded img-responsive" src="assets/img/profile.png" alt=""> 
                     </figure>
                      <div class="form-inline col-md-10 col-sm-9 col-xs-12"> 
-                      <input type="file" class="file-uploader pull-left" name="user_git" [(ngModel)]="crew.user_git"> 
+                      <input type="file" class="file-uploader pull-left"  enctype="multipart/form-data" (change)="onFileChanged($event)"> 
                       <button type="submit" class="btn btn-sm btn-default-alt pull-left">Update Image</button>
                     </div>
                    </div> 

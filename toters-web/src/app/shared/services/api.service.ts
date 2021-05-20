@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpErrorResponse, HttpHeaders } from  '@angular/common/http';
 import { environment } from 'src/environments/environment';
 
+
 @Injectable({
   providedIn: 'root'
 })
@@ -28,10 +29,10 @@ export class ApiService {
     return this.http.delete(environment.url.teachers + 'teachers/' + id);
   }
 
-  postTeachers(data) {
+  postTeachers(data, image) {
     const headers = new Headers();
     // headers.append('Content-Type', 'application/json');
-    return this.http.post(environment.url.teachers + 'teachers/', data);
+    return this.http.post(environment.url.teachers + 'teachers/', data, image);
   }
 
   // STUDENTS 
