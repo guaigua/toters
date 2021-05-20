@@ -14,7 +14,7 @@ export class RegisterViewComponent implements OnInit {
   crew: any = {};
   data: any = {};
   successfully: boolean = false;
-
+  selectedFile: File;
   constructor(public crewService:ApiService) { }
 
   ngOnInit(): void {
@@ -27,7 +27,7 @@ export class RegisterViewComponent implements OnInit {
     console.log(this.crew); 
 
     if ( this.flag  == "teachers") {
-      this.crewService.postTeachers(this.crew)
+      this.crewService.postTeachers(this.crew, this.selectedFile)
       .subscribe(   
         (data)=>{
           this.data = data;

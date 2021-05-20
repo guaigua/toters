@@ -32,9 +32,10 @@ export class CrudteachersComponent implements OnInit {
     urlPhoto: File = null,
   };
   data: any = {};
-  successfully: boolean = false;
+  successfully: boolean = false;  
   flag: any;
-  
+  selectedFile: File;
+   
   constructor(private teachersService: ApiService,) {}
 
     // // It maintains list of Registrations
@@ -124,6 +125,8 @@ export class CrudteachersComponent implements OnInit {
   }
   onSubmit(dataObj): void {
     this.crew = dataObj.form.value;
+    console.log(this.selectedFile);
+  
     console.log(this.crew);
     if (this.submitType == 'update') {
       this.teachersService.putTeachers(this.crew, this.crew.id)
@@ -139,7 +142,7 @@ export class CrudteachersComponent implements OnInit {
           console.log(error);
         }); 
       } else {
-        this.teachersService.postTeachers(this.crew)
+        this.teachersService.postTeachers(this.crew, this.selectedFile)
         .subscribe(   
           (data)=>{
             this.data = data;
@@ -155,9 +158,15 @@ export class CrudteachersComponent implements OnInit {
         }
     }
 
-    onSelectFile(event) {
+ 
 
-      this.flag = event.target.name;
-      console.log(this.flag);
+    onFileChanged(event) {
+      this.selectedFile = event.target.files[0]
     }
+
+    onSelectFile(event) {
+      this.selectedFile = event.target.files[0]
+     
+    }
+    
   }
