@@ -18,6 +18,9 @@ app.use('/', todolists);
 app.use('/students', students);
 app.use('/teachers', teachers);
 app.use('/courses', courses);
+app.use('/uploads', express.static('./uploads'));
+
+
 
 
 

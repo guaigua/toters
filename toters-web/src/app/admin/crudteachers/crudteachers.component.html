@@ -31,7 +31,8 @@
                       <td>{{ teacher.mail }}</td>
                       <td>{{ teacher.birth }}</td>
                       <td>{{ teacher.country }}</td>
-                      <td>{{ teacher.urlphoto }}</td>       
+                      <td><img src="http://localhost:8081/{{ teacher.urlphoto }}" alt="thumbnail" class="img-thumbnail"></td>
+              
                       <td>
                         <button type="button" class="btn btn-info"  data-toggle="modal" data-target="#teachers-form-modal" (click)="onEdit(i, teacher)"><i class="bi bi-pencil-square"></i></button>
                       </td>
