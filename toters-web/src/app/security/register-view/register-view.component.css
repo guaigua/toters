@@ -97,3 +97,13 @@ img{
     background-color: #EA743A;
     border-color:  #EA743A;
   }
+
+
+
+.form-group {
+    position:relative;
+} 
+.error {
+    color: #ff0000;
+    position: absolute;
+}

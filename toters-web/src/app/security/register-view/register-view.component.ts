@@ -15,6 +15,7 @@ export class RegisterViewComponent implements OnInit {
   data: any = {};
   successfully: boolean = false;
   selectedFile: File;
+  error: any = {};
   constructor(public crewService:ApiService) { }
 
   ngOnInit(): void {
@@ -22,8 +23,10 @@ export class RegisterViewComponent implements OnInit {
   }
 
   onSubmit(dataObj): void {
-    console.log(this.flag2.submitType);
-    this.crew = dataObj.form.value;
+    console.log("Lo");
+    this.validateForms(dataObj.form.value);
+  
+    
     console.log(this.crew); 
 
     if ( this.flag  == "teachers") {
@@ -59,4 +62,23 @@ export class RegisterViewComponent implements OnInit {
         } 
       }
     }
+
+    validateForms(data): void {
+      this.crew = data;
+     
+      if (this.crew.firstname == null) {
+        this.error.firstname = 'Este campo não pode estar vazio';
+        console.log('Llegue2', this.error.firstname );
+      }
+      if (this.crew.mail == null) {
+        this.error.mail = 'Este campo não pode estar vazio';       
+      }
+    }
+
+
+
+
+
+
+
   }
