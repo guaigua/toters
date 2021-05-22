@@ -29,7 +29,7 @@
                       <td>{{ student.mail }}</td>
                       <td>{{ student.birth }}</td>
                       <td>{{ student.country }}</td>
-                      <td><img src="http://localhost:8081/{{ student.urlphoto }}" alt="thumbnail" class="img-thumbnail"></td>
+                      <td><img src="http://localhost:8081/{{ teacher.urlphoto }}" alt="thumbnail" class="img-thumbnail"></td>
                       <td>
                         <button type="button" class="btn btn-info" data-toggle="modal" data-target="#students-form-modal" (click)="onEdit(i, student)"><i class="bi bi-pencil-square"></i></button>                      </td>
                       <td>
@@ -52,14 +52,14 @@
               <hr class="my-3">
               <div class="e-navlist e-navlist--active-bold">
               </div>
-              <hr class="my-3">
-              <div>
-                <div class="form-group">
-                  <label>Procurar usuario:</label>
-                  <div><input class="form-control w-100" type="text" placeholder="Nome" value=""></div>
-                </div>
-              </div>
-              <hr class="my-3">
+              <div class="row">
+                <div class="col-lg-12">
+<!--                   <label>Procurar usuario:</label>
+ -->                    <div class="input-group">
+                        <input class="form-control py-2 border-right-0 border" type="search" value="Procurar registro" id="input">
+                        <span class="input-group-append">
+                            <div class="input-group-text bg-transparent"><i class="bi bi-search"></i></div>
+                        </span>
              
       <!-- Modal Create User -->
       <div class="modal fade" role="dialog" tabindex="-1" id="students-form-modal">
