@@ -21,6 +21,7 @@ export class CrudstudentsComponent implements OnInit {
   toti: any = {};
   students: string = "students";
   crud: any = {};
+  error: any = {};
 
 
   crew: any = {};
@@ -114,7 +115,7 @@ onEdit(index: number, student: any ) {
     this.regModel.country = country;
   }
   onSubmit(dataObj): void {
-    
+    this.validateForms(dataObj.form.value);
     this.crew = dataObj.form.value;
     console.log(this.crew);
     if (this.submitType == 'update') {
@@ -148,4 +149,15 @@ onEdit(index: number, student: any ) {
         }); 
       } 
     } 
+    validateForms(data): void {
+      this.crew = data;
+     
+      if (this.crew.firstname == null) {
+        this.error.firstname = 'Este campo não pode estar vazio';
+        console.log('Llegue2', this.error.firstname );
+      }
+      if (this.crew.mail == null) {
+        this.error.mail = 'Este campo não pode estar vazio';       
+      }
+    }
   }

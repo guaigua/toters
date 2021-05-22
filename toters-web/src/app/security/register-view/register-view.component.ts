@@ -10,7 +10,7 @@ export class RegisterViewComponent implements OnInit {
 
   @Input() flag: string = '';
   @Input() flag2: any = {};
-
+  
   crew: any = {};
   data: any = {};
   successfully: boolean = false;

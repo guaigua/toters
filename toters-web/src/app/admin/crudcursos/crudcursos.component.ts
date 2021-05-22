@@ -1,14 +1,16 @@
 import { Component, OnInit } from '@angular/core';
 import { ApiService } from 'src/app/shared/services/api.service';
 
-class Registration {
-  constructor(
-    public title: string = '',
-    public description: string = '',
-    public capacity: string = '',
-    public hours: string = '',
-  ) {}
-}
+// class Registration {
+//   constructor(
+//     public firstName: string = '',
+//     public lastName: string = '',
+//     public dob: string = '',
+//     public email: string = '',
+//     public password: string = '',
+//   ) {}
+// }
+
 
 @Component({
   selector: 'app-crudcursos',
@@ -19,6 +21,8 @@ export class CrudcursosComponent implements OnInit {
   toti: any = {};
   courses: string = "courses";
   crew: any = {};
+  error: any = {};
+
 
   crud: any = {};
   data: any = {};
@@ -27,10 +31,10 @@ export class CrudcursosComponent implements OnInit {
   constructor(private coursesService: ApiService) {}
 
   // It maintains list of Registrations
-  registrations: Registration[] = [];
-  // It maintains registration Model
-  regModel: Registration;
-  // It maintains registration form display status. By default it will be false.
+/*   registrations: Registration[] = [];
+ */  // It maintains registration Model
+/*   regModel: Registration;
+ */  // It maintains registration form display status. By default it will be false.
   showNew: Boolean = false;
   // It will be either 'Save' or 'Update' based on operation.
   submitType: string = 'Save';
@@ -56,14 +60,14 @@ export class CrudcursosComponent implements OnInit {
  onSave() {
   if (this.submitType === 'Save') {
     // Push registration model object into registration list.
-    this.registrations.push(this.regModel);
-  } else {
+/*     this.registrations.push(this.regModel);
+ */  } else {
 
-    // Update the existing properties values based on model.
-    this.registrations[this.selectedRow].title = this.regModel.title;
+    //// Update the existing properties values based on model.
+    /* this.registrations[this.selectedRow].title = this.regModel.title;
     this.registrations[this.selectedRow].description = this.regModel.description;
     this.registrations[this.selectedRow].capacity = this.regModel.capacity;
-    this.registrations[this.selectedRow].hours = this.regModel.hours
+    this.registrations[this.selectedRow].hours = this.regModel.hours */
   }
   // Hide registration entry section.
   this.showNew = false;
@@ -79,8 +83,8 @@ export class CrudcursosComponent implements OnInit {
   // This method associate to Delete Button.
   onDelete(index: number, course: any) {
     // Delete the corresponding registration entry from the list.
-    this.registrations.splice(index, 1);
-    this.crew = course;
+/*     this.registrations.splice(index, 1);
+ */    this.crew = course;
     this.coursesService.removeCourses(this.crew.id)
     .subscribe(   
       (data)=>{
@@ -101,8 +105,11 @@ export class CrudcursosComponent implements OnInit {
   }
  
   onSubmit(dataObj): void {
+    this.validateForms(dataObj.form.value);
     this.crew = dataObj.form.value;
     console.log(this.crew);
+
+
     if (this.submitType == 'update') {
       this.coursesService.putCourses(this.crew, this.crew.id)
       .subscribe(   
@@ -129,6 +136,20 @@ export class CrudcursosComponent implements OnInit {
         (error)=>{ 
           console.log(error);
         }); 
+
+        
       } 
     }
+    validateForms(data): void {
+      this.crew = data;
+     
+      if (this.crew.firstname == null) {
+        this.error.firstname = 'Este campo não pode estar vazio';
+        console.log('Llegue2', this.error.firstname );
+      }
+      if (this.crew.mail == null) {
+        this.error.mail = 'Este campo não pode estar vazio';       
+      };
   }
+
+}

@@ -21,7 +21,13 @@ import { ApiService } from 'src/app/shared/services/api.service';
 export class CrudteachersComponent implements OnInit {
   toti: any = {};
   teachers: string = "teachers";
-  crud: any = {};
+  crud: any = {}
+  error: any = {};
+  selectedFile: File;
+  file: any = {};
+
+
+
   
   crew: any = {
     birth: "",​
@@ -30,11 +36,11 @@ export class CrudteachersComponent implements OnInit {
     lastname: "",​
     mail: "",
     urlPhoto: File = null,
+    
   };
   data: any = {};
   successfully: boolean = false;  
   flag: any;
-  selectedFile: File;
    
   constructor(private teachersService: ApiService,) {}
 
@@ -90,7 +96,6 @@ export class CrudteachersComponent implements OnInit {
     this.crud.submitType = this.submitType;
     this.crew = teacher; 
     console.log(this.crew);
-
   }
 
   // This method associate to Delete Button.
@@ -124,8 +129,8 @@ export class CrudteachersComponent implements OnInit {
     // this.regModel.country = country;
   }
   onSubmit(dataObj): void {
+    this.validateForms(dataObj.form.value);
     this.crew = dataObj.form.value;
-    console.log(this.selectedFile);
   
     console.log(this.crew);
     if (this.submitType == 'update') {
@@ -157,16 +162,20 @@ export class CrudteachersComponent implements OnInit {
           });  
         }
     }
-
+    
  
-
     onFileChanged(event) {
       this.selectedFile = event.target.files[0]
     }
-
-    onSelectFile(event) {
-      this.selectedFile = event.target.files[0]
+    validateForms(data): void {
+      this.crew = data;
      
-    }
-    
+      if (this.crew.firstname == null) {
+        this.error.firstname = 'Este campo não pode estar vazio';
+        console.log('Llegue2', this.error.firstname );
+      }
+      if (this.crew.mail == null) {
+        this.error.mail = 'Este campo não pode estar vazio';       
+      };
   }
+}

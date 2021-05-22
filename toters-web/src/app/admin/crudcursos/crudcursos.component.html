@@ -79,21 +79,33 @@
                   <div class="form-group">
                     <label for="Name">Nome</label>
                     <input type="text" class="form-control" id="title" name="title" [(ngModel)]="crew.title">
+                    <span class="error "  aria-label="Error" title="{{ this.error.title }}" *ngIf="error.title">
+                      <i class="bi bi-exclamation-circle-fill "></i>
+                  </span>
                 </div>
             
                 <div class="form-group">
                     <label for="Description">Descriçao</label>
                     <input type="text" class="form-control" id="description" name="description"  [(ngModel)]="crew.description">
-                </div>
+                    <span class="error "  aria-label="Error" title="{{ this.error.description }}" *ngIf="error.description">
+                      <i class="bi bi-exclamation-circle-fill "></i>
+                  </span>
+               </div>
                 
                 <div class="form-group">
                     <label for="Capacity">Capacidade</label>
                     <input type="texto" class="form-control" id="capacity" name="capacity"  [(ngModel)]="crew.capacity">
+                    <span class="error "  aria-label="Error" title="{{ this.error.capacity }}" *ngIf="error.capacity">
+                      <i class="bi bi-exclamation-circle-fill "></i>
+                  </span>
                 </div>
             
                 <div class="form-group">
                     <label for="Hours">Horas</label>
                     <input type="text" class="form-control" id="hours" name="hours"  [(ngModel)]="crew.hours">
+                    <span class="error "  aria-label="Error" title="{{ this.error.hours }}" *ngIf="error.hours">
+                      <i class="bi bi-exclamation-circle-fill "></i>
+                  </span>
                 </div>
                   
                   <div class="row text-center ">

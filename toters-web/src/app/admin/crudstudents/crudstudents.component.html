@@ -29,7 +29,7 @@
                       <td>{{ student.mail }}</td>
                       <td>{{ student.birth }}</td>
                       <td>{{ student.country }}</td>
-                      <td>{{ student.urlphoto }}</td>       
+                      <td><img src="http://localhost:8081/{{ student.urlphoto }}" alt="thumbnail" class="img-thumbnail"></td>
                       <td>
                         <button type="button" class="btn btn-info" data-toggle="modal" data-target="#students-form-modal" (click)="onEdit(i, student)"><i class="bi bi-pencil-square"></i></button>                      </td>
                       <td>
@@ -79,10 +79,17 @@
                   <div class="form-group">
                       <label for="Name">Nome</label>
                       <input type="text" class="form-control" id="name" name="firstname" [(ngModel)]="crew.firstname">
+                      <input type="text" class="form-control " id="name" name="firstname" [(ngModel)]="crew.firstname">
+                      <span class="error "  aria-label="Error" title="{{ this.error.firstname }}" *ngIf="error.firstname">
+                          <i class="bi bi-exclamation-circle-fill "></i>
+                      </span>
                   </div>          
                   <div class="form-group">
                       <label for="Lastname">Sobrenome</label>
                       <input type="text" class="form-control" id="lastname" name="lastname"  [(ngModel)]="crew.lastname">
+                      <span class="error "  aria-label="Error" title="{{ this.error.lastname }}" *ngIf="error.lastname">
+                        <i class="bi bi-exclamation-circle-fill "></i>
+                    </span>
                   </div>                  
                   <div class="form-group">
                       <label for="Mail">Correo Electronico:</label>
@@ -91,6 +98,9 @@
                   <div class="form-group">
                       <label for="Country">País:</label>
                       <input type="text" class="form-control" id="country" name="country"  [(ngModel)]="crew.country">
+                      <span class="error "  aria-label="Error" title="{{ this.error.country }}" *ngIf="error.country">
+                        <i class="bi bi-exclamation-circle-fill "></i>
+                    </span>
                   </div>
 
                  <div class="form-group">
