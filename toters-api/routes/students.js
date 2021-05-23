@@ -16,6 +16,13 @@ router.get('/students/:id', async  (req, res) => {
     res.json({ action: 'Show students for ID ', students: studentsList })
 })
 
+// Show students for Firstname
+router.get('/name/', async  (req, res) => {   
+    const studentsName =  req.body.name;  
+    const studentsOne = await students.findOne({ where: { firstname: studentsName } });
+    res.json({ action: 'Show students for Name ', students: studentsOne })
+}) 
+
 // Create one student
 router.post('/students', async (req, res) => { 
     var errors=[]

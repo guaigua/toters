@@ -16,6 +16,13 @@ router.get('/courses/:id', async  (req, res) => {
     res.json({ action: 'Show courses for ID ', courses: coursesList })
 })
 
+// Show courses for title
+router.get('/name/', async  (req, res) => {   
+    const coursesName =  req.body.name;  
+    const coursesOne = await courses.findOne({ where: { title: coursesName } });
+    res.json({ action: 'Show courses for Title', courses: coursesOne })
+}) 
+
 // Create one course
 router.post('/courses', async (req, res) => { 
     var errors=[]

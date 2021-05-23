@@ -18,6 +18,13 @@ router.get('/teachers/:id', async  (req, res) => {
     res.json({ action: 'Show teachers for ID ', teachers: teachersList })
 })
 
+// Show teachers for Firstname
+router.get('/name/', async  (req, res) => {   
+    const teachersName =  req.body.name;  
+    const teachersOne = await teachers.findOne({ where: { firstname: teachersName } });
+    res.json({ action: 'Show teachers for Name ', teachers: teachersOne })
+}) 
+
 // Create one teacher
 router.post('/teachers', imageController.uploadImg,  async (req, res) => { 
     
