@@ -41,6 +41,8 @@ export class CrudteachersComponent implements OnInit {
   data: any = {};
   successfully: boolean = false;  
   flag: any;
+  name: any;
+  x: any = {};
    
   constructor(private teachersService: ApiService,) {}
 
@@ -64,11 +66,20 @@ export class CrudteachersComponent implements OnInit {
   public async getTeachers(){
     const promise = await this.teachersService.getTeachers().toPromise();     
     this.toti = promise;
+    console.log(this.toti);
     for (let i = 0; i < this.toti.teachers.length; i++) {    
       this.teachers.push(this.toti.teachers[i].firstname); 
     }    
     console.log(this.teachers)   
   }
+
+  public async getTeachersforName(data){
+    this.toti = {};
+    const promise = await this.teachersService.getTeachersName(data).toPromise();     
+    this.toti = promise;
+    console.log(this.toti);
+  }
+
 
   //Search:
 
@@ -96,6 +107,7 @@ export class CrudteachersComponent implements OnInit {
 
   onSearch(data){
     console.log (data);
+    this.getTeachersforName(data);
   }
 
   // Click New:

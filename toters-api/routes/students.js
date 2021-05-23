@@ -17,8 +17,8 @@ router.get('/students/:id', async  (req, res) => {
 })
 
 // Show students for Firstname
-router.get('/name/', async  (req, res) => {   
-    const studentsName =  req.body.name;  
+router.get('/name/:name', async  (req, res) => {   
+    const studentsName =  req.params.name;  
     const studentsOne = await students.findOne({ where: { firstname: studentsName } });
     res.json({ action: 'Show students for Name ', students: studentsOne })
 }) 

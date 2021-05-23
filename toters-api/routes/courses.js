@@ -17,8 +17,8 @@ router.get('/courses/:id', async  (req, res) => {
 })
 
 // Show courses for title
-router.get('/name/', async  (req, res) => {   
-    const coursesName =  req.body.name;  
+router.get('/name/:name', async  (req, res) => {   
+    const coursesName =  req.params.name;  
     const coursesOne = await courses.findOne({ where: { title: coursesName } });
     res.json({ action: 'Show courses for Title', courses: coursesOne })
 }) 
