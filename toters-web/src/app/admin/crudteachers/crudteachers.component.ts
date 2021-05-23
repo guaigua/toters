@@ -1,4 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
+import { NgbTypeahead } from '@ng-bootstrap/ng-bootstrap';
+import { merge, Observable, OperatorFunction, Subject } from 'rxjs';
+import { debounceTime, distinctUntilChanged, filter, map } from 'rxjs/operators';
 import { ApiService } from 'src/app/shared/services/api.service';
 
 // class Registration {
@@ -20,23 +23,20 @@ import { ApiService } from 'src/app/shared/services/api.service';
 })
 export class CrudteachersComponent implements OnInit {
   toti: any = {};
-  teachers: string = "teachers";
-  crud: any = {}
+  // teachers: string = "teachers";
+  teachers: any = [];
+  crud: any = {};
   error: any = {};
   selectedFile: File;
   file: any = {};
 
-
-
-  
   crew: any = {
     birth: "",​
     country: "",
     firstname: "",
     lastname: "",​
     mail: "",
-    urlPhoto: File = null,
-    
+    urlPhoto: File = null,    
   };
   data: any = {};
   successfully: boolean = false;  
@@ -63,8 +63,42 @@ export class CrudteachersComponent implements OnInit {
 
   public async getTeachers(){
     const promise = await this.teachersService.getTeachers().toPromise();     
-    this.toti = promise;   
+    this.toti = promise;
+    for (let i = 0; i < this.toti.teachers.length; i++) {    
+      this.teachers.push(this.toti.teachers[i].firstname); 
+    }    
+    console.log(this.teachers)   
   }
+
+  //Search:
+
+  model: any;
+
+  @ViewChild('instance', {static: true}) instance: NgbTypeahead;
+  focus$ = new Subject<string>();
+  click$ = new Subject<string>();
+
+  search: OperatorFunction<string, readonly string[]> = (text$: Observable<string>) => {
+    const debouncedText$ = text$.pipe(debounceTime(200), distinctUntilChanged());
+    const clicksWithClosedPopup$ = this.click$.pipe(filter(() => !this.instance.isPopupOpen()));
+    const inputFocus$ = this.focus$;
+
+    return merge(debouncedText$, inputFocus$, clicksWithClosedPopup$).pipe(
+      map(term => (term === '' ? this.teachers
+        : this.teachers.filter(v => v.toLowerCase().indexOf(term.toLowerCase()) > -1)).slice(0, 10))
+        
+    );
+    
+    
+  }
+
+  // Click Search:
+
+  onSearch(data){
+    console.log (data);
+  }
+
+  // Click New:
 
   onNew() { 
     this.submitType = 'New';

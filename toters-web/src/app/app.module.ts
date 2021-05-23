@@ -8,7 +8,7 @@ import { TemplateModule } from './shared/template/template.module';
 import { AdminModule } from './admin/admin.module';
 import { HttpClientModule } from '@angular/common/http';
 import { SecurityModule } from './security/security.module';
-
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 @NgModule({
   declarations: [
@@ -24,8 +24,8 @@ import { SecurityModule } from './security/security.module';
     AdminModule,
     FormsModule,
     ReactiveFormsModule,
-    SecurityModule
-
+    SecurityModule,
+    NgbModule,
         
   ],
   providers: [],

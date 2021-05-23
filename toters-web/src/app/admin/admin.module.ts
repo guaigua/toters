@@ -7,6 +7,7 @@ import { TemplateModule } from '../shared/template/template.module';
 import { FormsModule } from '@angular/forms';
 import { CrudcursosComponent } from './crudcursos/crudcursos.component';
 import { SecurityModule } from '../security/security.module';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 @NgModule({
   declarations: [   
@@ -19,7 +20,9 @@ import { SecurityModule } from '../security/security.module';
     CommonModule,
     TemplateModule,
     FormsModule,
-    SecurityModule
+    NgbModule,
+    SecurityModule,
+   
   ]
 })
 export class AdminModule { }

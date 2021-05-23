@@ -1,6 +1,6 @@
-<app-header></app-header>
 
-<div class="card mt-3 ml-3" style="width: 18rem;" *ngFor="let course of toti.courses">
+
+<!-- <div class="card mt-3 ml-3" style="width: 18rem;" *ngFor="let course of toti.courses">
     <img src="..." class="card-img-top" alt="...">
     <div class="card-body"  >
       <h5 class="card-title">{{ course.title }}</h5>
@@ -10,5 +10,20 @@
   </div>
 
   <i class="bi bi-star-fill"></i>
-  <i class="bi bi-alarm-fill"></i>
-<app-footer></app-footer>
+  <i class="bi bi-alarm-fill"></i> -->
+ 
+  <label for="typeahead-focus">Search for a state:</label>
+  <input
+    id="typeahead-focus"
+    type="text"
+    class="form-control"
+    [(ngModel)]="model"
+    [ngbTypeahead]="search"
+    (focus)="focus$.next($any($event).target.value)"
+    (click)="click$.next($any($event).target.value)"
+    #instance="ngbTypeahead"
+    placeholder="Pesquisar"
+  />
+  <hr>
+  <pre>Model: {{ model | json }}</pre>
+

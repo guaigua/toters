@@ -50,6 +50,7 @@ export class CrudstudentsComponent implements OnInit {
   public async getStudents(){
     const promise = await this.studentsService.getStudents().toPromise();     
     this.toti = promise;
+    console.log(this.toti.students)
   }
 
   onNew() { 
