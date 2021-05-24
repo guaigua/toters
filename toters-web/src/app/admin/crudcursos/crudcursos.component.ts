@@ -1,4 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
+import { NgbTypeahead } from '@ng-bootstrap/ng-bootstrap';
+import { merge, Observable, OperatorFunction, Subject } from 'rxjs';
+import { debounceTime, distinctUntilChanged, filter, map } from 'rxjs/operators';
 import { ApiService } from 'src/app/shared/services/api.service';
 
 // class Registration {
@@ -19,14 +22,24 @@ import { ApiService } from 'src/app/shared/services/api.service';
 })
 export class CrudcursosComponent implements OnInit {
   toti: any = {};
-  courses: string = "courses";
-  crew: any = {};
-  error: any = {};
-
-
+  // courses: string = "courses";
+  courses: any = [];
   crud: any = {};
+  error: any = {};
+  selectedFile: File;
+  file: any = {};
+
+  crew: any = {
+    birth: "",​
+    country: "",
+    firstname: "",
+    lastname: "",​
+    mail: "",
+    urlPhoto: File = null,    
+  };
   data: any = {};
-  successfully: boolean = false;
+  successfully: boolean = false; 
+
 
   constructor(private coursesService: ApiService) {}
 
@@ -40,8 +53,6 @@ export class CrudcursosComponent implements OnInit {
   submitType: string = 'Save';
   // It maintains table row index based on selection.
   selectedRow: number;
-  // It maintains Array of countries.
-  countries: string[] = ['US', 'UK', 'India', 'UAE'];
 
   ngOnInit(): void {
     this.getCourses();
@@ -50,8 +61,39 @@ export class CrudcursosComponent implements OnInit {
   public async getCourses(){
     const promise = await this.coursesService.getCourses().toPromise();     
     this.toti = promise;
-    console.log (this.crew.courses);
+    for (let i = 0; i < this.toti.courses.length; i++) {    
+      this.courses.push(this.toti.courses[i].title); 
+    }    
+    console.log(this.courses)   
   }
+
+  //Search:
+
+  model: any;
+
+  @ViewChild('instance', {static: true}) instance: NgbTypeahead;
+  focus$ = new Subject<string>();
+  click$ = new Subject<string>();
+
+  search: OperatorFunction<string, readonly string[]> = (text$: Observable<string>) => {
+    const debouncedText$ = text$.pipe(debounceTime(200), distinctUntilChanged());
+    const clicksWithClosedPopup$ = this.click$.pipe(filter(() => !this.instance.isPopupOpen()));
+    const inputFocus$ = this.focus$;
+
+    return merge(debouncedText$, inputFocus$, clicksWithClosedPopup$).pipe(
+      map(term => (term === '' ? this.courses
+        : this.courses.filter(v => v.toLowerCase().indexOf(term.toLowerCase()) > -1)).slice(0, 10))
+
+    );
+  }
+
+  // Click Search:
+
+  onSearch(data){
+    console.log (data);
+  }
+
+  // Click New:
   onNew() { 
     this.submitType = 'New';
     this.crud.submitType = this.submitType;  

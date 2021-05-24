@@ -1,4 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
+import { NgbTypeahead } from '@ng-bootstrap/ng-bootstrap';
+import { merge, Observable, OperatorFunction, Subject } from 'rxjs';
+import { debounceTime, distinctUntilChanged, filter, map } from 'rxjs/operators';
 import { ApiService } from 'src/app/shared/services/api.service';
 
 class Registration {
@@ -19,14 +22,23 @@ class Registration {
 })
 export class CrudstudentsComponent implements OnInit {
   toti: any = {};
-  students: string = "students";
+  // students: string = "students";
+  students: any = [];
   crud: any = {};
   error: any = {};
+  selectedFile: File;
+  file: any = {};
 
-
-  crew: any = {};
+  crew: any = {
+    birth: "",​
+    country: "",
+    firstname: "",
+    lastname: "",​
+    mail: "",
+    urlPhoto: File = null,    
+  };
   data: any = {};
-  successfully: boolean = false;
+  successfully: boolean = false; 
 
   constructor(private studentsService: ApiService) {}
 
@@ -50,9 +62,41 @@ export class CrudstudentsComponent implements OnInit {
   public async getStudents(){
     const promise = await this.studentsService.getStudents().toPromise();     
     this.toti = promise;
-    console.log(this.toti.students)
+    for (let i = 0; i < this.toti.students.length; i++) {    
+      this.students.push(this.toti.students[i].firstname); 
+    }    
+    console.log(this.students)   
   }
 
+  //Search:
+
+  model: any;
+
+  @ViewChild('instance', {static: true}) instance: NgbTypeahead;
+  focus$ = new Subject<string>();
+  click$ = new Subject<string>();
+
+  search: OperatorFunction<string, readonly string[]> = (text$: Observable<string>) => {
+    const debouncedText$ = text$.pipe(debounceTime(200), distinctUntilChanged());
+    const clicksWithClosedPopup$ = this.click$.pipe(filter(() => !this.instance.isPopupOpen()));
+    const inputFocus$ = this.focus$;
+
+    return merge(debouncedText$, inputFocus$, clicksWithClosedPopup$).pipe(
+      map(term => (term === '' ? this.students
+        : this.students.filter(v => v.toLowerCase().indexOf(term.toLowerCase()) > -1)).slice(0, 10))
+
+    );
+
+
+  }
+
+  // Click Search:
+
+  onSearch(data){
+    console.log (data);
+  }
+
+  // Click New:
   onNew() { 
     this.submitType = 'New';
     this.crud.submitType = this.submitType;  
