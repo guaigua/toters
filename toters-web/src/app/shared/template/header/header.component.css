@@ -1,7 +1,7 @@
 
 img{
-    width:60px;
-    height: 30px;
+    width:70px;
+    height: 35px;
     margin: 0px;
 }
 
@@ -11,6 +11,22 @@ img{
     margin-top:0px
 }
 
-a{
+.nav-link{
     color:  #6C3D7B;
+}
+
+.navbar-light .navbar-nav .nav-link {
+/*  color: #6C3D7B;
+ */ font-weight: 500px;
+}
+
+a {
+    color: inherit;
+    text-decoration: inherit;
+}
+
+
+
+a.active {
+    color: #6c3d7b;
 }
