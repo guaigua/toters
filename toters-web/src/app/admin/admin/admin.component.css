@@ -62,4 +62,23 @@
     margin-bottom: 5px;
 }
 
+
+.align-center {
+    display: flex;
+    align-items: right;
+  }
+  
+
+  .btn-primary {
+    color: #fff;
+    background-color: #8d3ca8;
+    border-color: #a040c5;
+}
+
+
+.btn-success {
+    color: #fff;
+    background-color: #EA743A;
+    border-color:  #EA743A;
+}
                                                                                                                                                                                                                                                                                     

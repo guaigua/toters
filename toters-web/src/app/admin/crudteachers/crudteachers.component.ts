@@ -80,9 +80,7 @@ export class CrudteachersComponent implements OnInit {
     console.log(this.toti);
   }
 
-
   //Search:
-
   model: any;
 
   @ViewChild('instance', {static: true}) instance: NgbTypeahead;
@@ -99,8 +97,6 @@ export class CrudteachersComponent implements OnInit {
         : this.teachers.filter(v => v.toLowerCase().indexOf(term.toLowerCase()) > -1)).slice(0, 10))
         
     );
-    
-    
   }
 
   // Click Search:

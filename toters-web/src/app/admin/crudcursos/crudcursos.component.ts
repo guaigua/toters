@@ -26,19 +26,13 @@ export class CrudcursosComponent implements OnInit {
   courses: any = [];
   crud: any = {};
   error: any = {};
-  selectedFile: File;
-  file: any = {};
-
-  crew: any = {
-    birth: "",​
-    country: "",
-    firstname: "",
-    lastname: "",​
-    mail: "",
-    urlPhoto: File = null,    
-  };
+  crew: any = {}
+   
   data: any = {};
-  successfully: boolean = false; 
+  successfully: boolean = false;  
+  flag: any;
+  name: any;
+  x: any = {};
 
 
   constructor(private coursesService: ApiService) {}
@@ -66,9 +60,13 @@ export class CrudcursosComponent implements OnInit {
     }    
     console.log(this.courses)   
   }
-
+  public async getCoursesforName(data){
+    this.toti = {};
+    const promise = await this.coursesService.getCoursesName(data).toPromise();     
+    this.toti = promise;
+    console.log(this.toti);
+  }
   //Search:
-
   model: any;
 
   @ViewChild('instance', {static: true}) instance: NgbTypeahead;
@@ -91,7 +89,10 @@ export class CrudcursosComponent implements OnInit {
 
   onSearch(data){
     console.log (data);
+    this.getCoursesforName(data);
+
   }
+ 
 
   // Click New:
   onNew() { 

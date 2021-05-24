@@ -68,6 +68,14 @@ export class CrudstudentsComponent implements OnInit {
     console.log(this.students)   
   }
 
+  public async getStudentsforName(data){
+    this.toti = {};
+    const promise = await this.studentsService.getStudentsName(data).toPromise();     
+    this.toti = promise;
+    console.log(this.toti);
+  }
+
+
   //Search:
 
   model: any;
@@ -94,6 +102,8 @@ export class CrudstudentsComponent implements OnInit {
 
   onSearch(data){
     console.log (data);
+    this.getStudentsforName(data);
+
   }
 
   // Click New:

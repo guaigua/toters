@@ -48,6 +48,12 @@ export class ApiService {
     // headers.append('Content-Type', 'application/json');
     return this.http.get(environment.url.students + 'students/');
   } 
+  getStudentsName(data) {
+    console.log(data);
+    const headers = new Headers();
+    // headers.append('Content-Type', 'application/json');
+    return this.http.get(environment.url.teachers + 'name/' + data);
+  }
 
   postStudents(data) {
     const headers = new Headers();
@@ -75,7 +81,12 @@ export class ApiService {
     // headers.append('Content-Type', 'application/json');
     return this.http.get(environment.url.courses + 'courses/');   
   }
-
+  getCoursesName(data) {
+    console.log(data);
+    const headers = new Headers();
+    // headers.append('Content-Type', 'application/json');
+    return this.http.get(environment.url.teachers + 'name/' + data);
+  }
   postCourses(data) {
     const headers = new Headers();
     // headers.append('Content-Type', 'application/json');
