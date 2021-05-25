@@ -3,7 +3,8 @@ import { NgbTypeahead } from '@ng-bootstrap/ng-bootstrap';
 import { merge, Observable, OperatorFunction, Subject } from 'rxjs';
 import { debounceTime, distinctUntilChanged, filter, map } from 'rxjs/operators';
 import { ApiService } from 'src/app/shared/services/api.service';
-
+import { FormBuilder, FormGroup } from '@angular/forms';
+import { HttpClient } from '@angular/common/http';
 // class Registration {
 //   constructor(
 //     public firstName: string = '',
@@ -14,6 +15,8 @@ import { ApiService } from 'src/app/shared/services/api.service';
 //     public country: string = 'Select country'
 //   ) {}
 // }
+
+
 
 
 @Component({
@@ -31,7 +34,7 @@ export class CrudteachersComponent implements OnInit {
   crud: any = {};
   error: any = {};
   selectedFile: File;
-  file: any = {};
+ 
 
   crew: any = {
     birth: "",​
@@ -48,8 +51,14 @@ export class CrudteachersComponent implements OnInit {
   x: any = {};
   array: any = [];
   searchText: any;
+
+  fag: any = {};
+  photoSelected: string | ArrayBuffer;
+  file: File;
+  formData: FormData;
    
-  constructor(private teachersService: ApiService,) {}
+  constructor(private teachersService: ApiService,
+              private http: HttpClient) {}
 
     // // It maintains list of Registrations
     // registrations: Registration[] = [];
@@ -176,11 +185,24 @@ export class CrudteachersComponent implements OnInit {
     // Assign corresponding selected country to model.
     // this.regModel.country = country;
   }
+
+  onPhotoSelected(event): void {
+    if (event.target.files && event.target.files[0]) {
+      this.file = <File>event.target.files[0];
+      // image preview
+      const reader = new FileReader();
+      reader.onload = e => this.photoSelected = reader.result;
+      reader.readAsDataURL(this.file);
+    }
+  }
+
+ 
+
   onSubmit(dataObj): void {
     this.validateForms(dataObj.form.value);
-    this.crew = dataObj.form.value;
-  
-    console.log(this.crew);
+    this.crew = dataObj.form.value;  
+    this.crew.urlphoto = this.crew.urlphoto.slice(13);
+    console.log(this.crew);  
     if (this.submitType == 'update') {
       this.teachersService.putTeachers(this.crew, this.crew.id)
       .subscribe(   
@@ -195,7 +217,8 @@ export class CrudteachersComponent implements OnInit {
           console.log(error);
         }); 
       } else {
-        this.teachersService.postTeachers(this.crew, this.selectedFile)
+        //Uploading Body
+        this.teachersService.postTeachers(this.crew)
         .subscribe(   
           (data)=>{
             this.data = data;
@@ -207,7 +230,19 @@ export class CrudteachersComponent implements OnInit {
           },
           (error)=>{ 
             console.log(error);
-          });  
+          }); 
+        //Uploading File
+        this.formData = new FormData();
+        this.formData.append('urlphoto', this.file);
+    
+        this.teachersService.uploadImage(this.formData).subscribe(   
+          (data)=>{
+            this.data = data;                 
+            console.log("Post con éxito", this.data);         
+          },
+          (error)=>{ 
+            console.log(error);
+          });   
         }
     }
     

@@ -147,9 +147,11 @@
                       <input hidden (change)="onSelectFile($event)" #fileInput type="file" mat-icon-button name="first day"> -->
                    <label for="User_git">Foto de perfil</label>
                    <div class="form-group avatar"> 
-                    <figure class="figure col-md-2 col-sm-3 col-xs-12"> 
-                    <img class="img-rounded img-responsive" src="assets/img/profile.png" alt="Foto de perfil"> 
-                    </figure>
+                      <figure class="figure col-md-2 col-sm-3 col-xs-12"> 
+                    
+                        <img [src]="photoSelected || 'assets/img/profile.png'" class="img-fluid" alt="No image"
+                            (click)="photoInput.click()" > 
+                      </figure>
                      
                    </div> 
                    <!-- <div class="form-inline col-md-10 col-sm-9 col-xs-6"> 
@@ -158,19 +160,17 @@
                   </div> -->
 
 
-                  <div class="input-group mb-3">
-                    <div class="input-group-prepend">
-                    </div>
-                    <div class="custom-file">
-                      <div class="custom-file">
-                      <input type="file" class="custom-file-input" id="customFileLangHTML">
-                      <label class="custom-file-label" for="customFileLangHTML" data-browse="Escolher ">Escolher arquivo</label>
-                    </div>
-                    <div class="input-group-append">
-                      <button class="btn btn-outline-secondary" type="button">Enviar</button>
-                    </div>
+                  <div class="input-group mb-3">                  
+                 
+
+                    <input type="file" class="d-none" (change)="onPhotoSelected($event)" #photoInput id="urlphoto" name="urlphoto" [(ngModel)]="crew.urlphoto">
+                 
+    
+                    <button class="btn btn-primary btn-block">Upload</button>
+
+                  
                   </div>
-                </div>
+               
                   <hr>
 
 

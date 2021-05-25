@@ -30,7 +30,7 @@ export class RegisterViewComponent implements OnInit {
     console.log(this.crew); 
 
     if ( this.flag  == "teachers") {
-      this.crewService.postTeachers(this.crew, this.selectedFile)
+      this.crewService.postTeachers(this.crew)
       .subscribe(   
         (data)=>{
           this.data = data;

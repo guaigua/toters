@@ -5,6 +5,19 @@ const imageController = require("../controllers/image");
 
 const { teachers } = require('../db');
 
+const multer = require('multer');
+
+const storage = multer.diskStorage({
+    destination: (req, file, callBack) => {
+        callBack(null, 'uploads')
+    },
+    filename: (req, file, callBack) => {
+        callBack(null, `${file.originalname}`)
+    }
+  })
+  
+const upload = multer({ storage: storage })
+
 // List teachers
 router.get('/teachers', async (req, res) => {
     const teachersList =  await teachers.findAll();
@@ -26,7 +39,7 @@ router.get('/name/:name', async  (req, res) => {
 }) 
 
 // Create one teacher
-router.post('/teachers', imageController.uploadImg,  async (req, res) => { 
+router.post('/teachers', async (req, res) => { 
     
     var errors=[]
     if (!req.body.firstname){
@@ -57,7 +70,7 @@ router.post('/teachers', imageController.uploadImg,  async (req, res) => {
         mail: req.body.mail,
         birth: req.body.birth,
         country: req.body.country,
-        urlphoto: req.file.path
+        urlphoto: req.body.urlphoto,
     })
  
     res.json({ action: 'Teachers Create ', teachersCreate})
@@ -96,6 +109,18 @@ router.delete('/teachers/:id', async (req, res) => {
         return res.send({ error: e})
     }
 })
+
+router.post('/file', upload.single('urlphoto'), (req, res, next) => {
+    const file = req.file;
+    console.log(file.filename);
+ 
+    if (!file) {
+      const error = new Error('No File')
+      error.httpStatusCode = 400
+      return next(error)
+    }
+      res.send(file);
+  })
 
 
 

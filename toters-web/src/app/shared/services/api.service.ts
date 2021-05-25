@@ -35,10 +35,11 @@ export class ApiService {
     return this.http.delete(environment.url.teachers + 'teachers/' + id);
   }
 
-  postTeachers(data, image) {
+  postTeachers( data) {
+    console.log(data);
     const headers = new Headers();
     // headers.append('Content-Type', 'application/json');
-    return this.http.post(environment.url.teachers + 'teachers/', data, image);
+    return this.http.post(environment.url.teachers + 'teachers/',  data);
   }
 
   // STUDENTS 
@@ -102,6 +103,12 @@ export class ApiService {
     const headers = new Headers();
     // headers.append('Content-Type', 'application/json');
     return this.http.delete(environment.url.courses + 'courses/' + id);
+  }
+
+  uploadImage(data: FormData){
+    const headers = new Headers();
+    // headers.append('Content-Type', 'application/json');
+    return this.http.post<any>(environment.url.teachers + 'file/',  data);     
   }
 
 }
