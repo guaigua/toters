@@ -8,6 +8,7 @@ import { FormsModule } from '@angular/forms';
 import { CrudcursosComponent } from './crudcursos/crudcursos.component';
 import { SecurityModule } from '../security/security.module';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { Ng2SearchPipeModule } from 'ng2-search-filter';
 
 @NgModule({
   declarations: [   
@@ -21,6 +22,7 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
     TemplateModule,
     FormsModule,
     NgbModule,
+    Ng2SearchPipeModule,
     SecurityModule,
    
   ]

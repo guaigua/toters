@@ -22,7 +22,10 @@ import { ApiService } from 'src/app/shared/services/api.service';
   styleUrls: ['./crudteachers.component.css']
 })
 export class CrudteachersComponent implements OnInit {
-  toti: any = {};
+  toti: any = {
+    action: "",
+    teachers: []
+  };
   // teachers: string = "teachers";
   teachers: any = [];
   crud: any = {};
@@ -43,6 +46,8 @@ export class CrudteachersComponent implements OnInit {
   flag: any;
   name: any;
   x: any = {};
+  array: any = [];
+  searchText: any;
    
   constructor(private teachersService: ApiService,) {}
 
@@ -73,38 +78,39 @@ export class CrudteachersComponent implements OnInit {
     console.log(this.teachers)   
   }
 
-  public async getTeachersforName(data){
-    this.toti = {};
-    const promise = await this.teachersService.getTeachersName(data).toPromise();     
-    this.toti = promise;
-    console.log(this.toti);
-  }
+  // public async getTeachersforName(data){
+  //   this.toti = {};
+  //   const promise = await this.teachersService.getTeachersName(data).toPromise(); 
+  //   this.array = promise;
+  //   console.log(this.array);
+  //   this.toti.teachers.push(this.array.teachers);
+  // }
 
-  //Search:
-  model: any;
+  // //Search:
+  // model: any;
 
-  @ViewChild('instance', {static: true}) instance: NgbTypeahead;
-  focus$ = new Subject<string>();
-  click$ = new Subject<string>();
+  // @ViewChild('instance', {static: true}) instance: NgbTypeahead;
+  // focus$ = new Subject<string>();
+  // click$ = new Subject<string>();
 
-  search: OperatorFunction<string, readonly string[]> = (text$: Observable<string>) => {
-    const debouncedText$ = text$.pipe(debounceTime(200), distinctUntilChanged());
-    const clicksWithClosedPopup$ = this.click$.pipe(filter(() => !this.instance.isPopupOpen()));
-    const inputFocus$ = this.focus$;
+  // search: OperatorFunction<string, readonly string[]> = (text$: Observable<string>) => {
+  //   const debouncedText$ = text$.pipe(debounceTime(200), distinctUntilChanged());
+  //   const clicksWithClosedPopup$ = this.click$.pipe(filter(() => !this.instance.isPopupOpen()));
+  //   const inputFocus$ = this.focus$;
 
-    return merge(debouncedText$, inputFocus$, clicksWithClosedPopup$).pipe(
-      map(term => (term === '' ? this.teachers
-        : this.teachers.filter(v => v.toLowerCase().indexOf(term.toLowerCase()) > -1)).slice(0, 10))
+  //   return merge(debouncedText$, inputFocus$, clicksWithClosedPopup$).pipe(
+  //     map(term => (term === '' ? this.teachers
+  //       : this.teachers.filter(v => v.toLowerCase().indexOf(term.toLowerCase()) > -1)).slice(0, 10))
         
-    );
-  }
+  //   );
+  // }
 
   // Click Search:
 
-  onSearch(data){
-    console.log (data);
-    this.getTeachersforName(data);
-  }
+  // onSearch(data){
+  //   console.log (data);
+  //   this.getTeachersforName(data);
+  // }
 
   // Click New:
 

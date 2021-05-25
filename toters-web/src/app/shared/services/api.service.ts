@@ -17,8 +17,7 @@ export class ApiService {
     return this.http.get(environment.url.teachers + 'teachers/');
   }
 
-  getTeachersName(data) {
-    console.log(data);
+  getTeachersName(data) {    
     const headers = new Headers();
     // headers.append('Content-Type', 'application/json');
     return this.http.get(environment.url.teachers + 'name/' + data);

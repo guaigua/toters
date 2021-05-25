@@ -38,7 +38,8 @@ export class CrudstudentsComponent implements OnInit {
     urlPhoto: File = null,    
   };
   data: any = {};
-  successfully: boolean = false; 
+  successfully: boolean = false;
+  searchText: any;
 
   constructor(private studentsService: ApiService) {}
 

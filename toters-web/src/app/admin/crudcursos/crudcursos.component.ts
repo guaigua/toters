@@ -33,7 +33,7 @@ export class CrudcursosComponent implements OnInit {
   flag: any;
   name: any;
   x: any = {};
-
+  searchText: any;
 
   constructor(private coursesService: ApiService) {}
 

@@ -53,7 +53,7 @@
                     </tr>
                   </thead>
                   <tbody>
-                    <tr *ngFor="let course of toti.courses; let i = index">
+                    <tr *ngFor="let course of toti.courses | filter:searchText ; let i = index">
                       <th scope="row">{{ i + 1 }}</th>
                       <td>{{ course.title }}</td>
                       <td>{{ course.description }}</td>
@@ -88,7 +88,7 @@
 <!--           <label>Procurar registro:</label>
  -->            <div class="input-group">
                 <!-- <input class="form-control py-2 border-right-0 border" type="search" value="Procurar registro" id="input"> -->
-                <input
+                <!-- <input
                 id="typeahead-focus"
                 type="text"
                 class="form-control"
@@ -101,7 +101,8 @@
               />
                 <span class="input-group-append">
                     <div class="input-group-text bg-transparent" (click)="onSearch(model)"><i class="bi bi-search"></i></div>
-                </span>
+                </span> -->
+                <input class="form-control" type="text" name="search" [(ngModel)]="searchText" autocomplete="off" placeholder="Procurar registro">
             </div>
         </div>
       </div>
