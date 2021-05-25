@@ -31,7 +31,10 @@
                       <td>{{ teacher.mail }}</td>
                       <td>{{ teacher.birth }}</td>
                       <td>{{ teacher.country }}</td>
-                      <td><img src="http://localhost:8081/{{ teacher.urlphoto }}" alt="thumbnail" class="img-thumbnail"></td>
+                      <td>
+                      <div *ngIf="teacher.urlphoto"><img src="http://localhost:8081/{{ teacher.urlphoto }}" alt="thumbnail" class="img-thumbnail"></div>
+                      <div *ngIf="!teacher.urlphoto"><img src="assets/img/profile.png" alt="thumbnail" class="img-thumbnail"></div></td>
+  
               
                       <td>
                         <button type="button" class="btn btn-info"  data-toggle="modal" data-target="#teachers-form-modal" (click)="onEdit(i, teacher)"><i class="bi bi-pencil-square"></i></button>
