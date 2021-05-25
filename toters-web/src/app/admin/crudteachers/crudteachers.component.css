@@ -54,3 +54,16 @@
   border-color: #a040c5;
   box-shadow: 0 0 0 0.2rem #8704b3;
 }
+
+.dashboard{
+    font-size: 17px;
+    font-weight: 700px;
+    margin-bottom: 1px;
+    margin-top: 10px;
+  }
+
+.nav-tabs {
+  border-bottom: 0px solid #dee2e6;
+  margin-top: 5px;
+
+}

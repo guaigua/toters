@@ -135,7 +135,8 @@ body{
 .nav-link{
     color: #495057;
     border-color: #dee2e6 #dee2e6 #fff;
-    margin-bottom: 5px;
+    margin-top: 25px;
+
 }
 
 .row {
@@ -189,4 +190,14 @@ img{
   background-color: #8d3ca8;
   border-color: #a040c5;
   box-shadow: 0 0 0 0.2rem #8704b3;
+}
+
+.dashboard{
+  font-size: 17px;
+  font-weight: 700px;
+  margin-bottom: 1px;
+}
+
+.nav-tabs {
+  border-bottom: 0px solid #dee2e6;
 }

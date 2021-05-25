@@ -103,4 +103,21 @@
     margin: 0 auto;
     }
 
+    .dashboard{
+      font-size: 17px;
+      font-weight: 700px;
+      margin-bottom: 1px;
+      margin-top: 10px;
+
+    }
+    .nav-tabs {
+      border-bottom: 0px solid #dee2e6;
+      margin-top: 5px;
+
+    }
+    
+    .e-nav-tabs {
+      margin-top: 5px;
+
+    }
     
