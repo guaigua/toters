@@ -150,14 +150,17 @@ onEdit(index: number, student: any ) {
     .subscribe(   
       (data)=>{
         this.data = data;
+        if(confirm("Vocẽ tem certeza que deseja apagar? ")) {
         this.successfully = true;         
         console.log("Eliminado con éxito", this.data);
         this.getStudents();
-      },
+      }
       (error)=>{ 
         console.log(error);
+      }
       }); 
   }
+
 
   // This method associate toCancel Button.
   onCancel() {

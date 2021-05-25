@@ -164,10 +164,11 @@ export class CrudteachersComponent implements OnInit {
     .subscribe(   
       (data)=>{
         this.data = data;
+        if(confirm("Vocẽ tem certeza que deseja apagar? ")) {
         this.successfully = true;         
         console.log("Eliminado con éxito", this.data);
         this.getTeachers();
-     
+        }
       },
       (error)=>{ 
         console.log(error);
@@ -231,6 +232,8 @@ export class CrudteachersComponent implements OnInit {
           (error)=>{ 
             console.log(error);
           }); 
+
+          
         //Uploading File
         this.formData = new FormData();
         this.formData.append('urlphoto', this.file);

@@ -93,4 +93,14 @@
         box-shadow: 0 0 0 0.2rem #8704b3;
       }
 
+
+
+  img{
+    max-width: 45%;
+    max-height: 45%;
+    
+    display: block;
+    margin: 0 auto;
+    }
+
     
