@@ -124,8 +124,9 @@ export class CrudteachersComponent implements OnInit {
   // Click New:
 
   onNew() { 
+    this.crew = {};
     this.submitType = 'New';
-    this.crud.submitType = this.submitType;  
+    this.photoSelected = "";  
   }
   
   // This method associate to Save Button.

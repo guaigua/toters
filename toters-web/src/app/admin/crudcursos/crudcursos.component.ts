@@ -96,8 +96,8 @@ export class CrudcursosComponent implements OnInit {
 
   // Click New:
   onNew() { 
-    this.submitType = 'New';
-    this.crud.submitType = this.submitType;  
+    this.crew = {};
+    this.submitType = 'new';  
   }
  // This method associate to Save Button.
  onSave() {
@@ -118,7 +118,7 @@ export class CrudcursosComponent implements OnInit {
 // This method associate to Edit Button.
   onEdit(index: number, course: any ) {
 
-    this.submitType = 'Update';
+    this.submitType = 'update';
     this.crud.submitType = this.submitType;
     this.crew = course; 
     console.log(this.crew)   ;
@@ -133,7 +133,10 @@ export class CrudcursosComponent implements OnInit {
       (data)=>{
         this.data = data;
         if(confirm("Vocẽ tem certeza que deseja apagar? ")) {
-        this.successfully = true;         
+        this.successfully = true;
+        setTimeout(()=>{
+          this.successfully = false;
+        }, 5000);        
         console.log("Eliminado con éxito", this.data);
         this.getCourses();
       }

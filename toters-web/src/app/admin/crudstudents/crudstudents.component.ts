@@ -53,7 +53,9 @@ export class CrudstudentsComponent implements OnInit {
 
   // This method associate to New Button.
   onNew() { 
-    this.submitType = 'new';  
+    this.crew = {};
+    this.submitType = 'new';
+    this.photoSelected = "";    
   }
 
   // This method associate to Edit Button.
