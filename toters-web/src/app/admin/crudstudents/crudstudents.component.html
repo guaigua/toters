@@ -4,7 +4,7 @@
     <div class="col">
       <div class="e-tabs mb-0 px-3">
         <ul class="nav nav-tabs">
-          <li class="dashboard"><a class="nav-link active" href="#">Dashboard Alunos</a></li>
+          <li class="dashboard"><a class="nav-link active">Listado de Alunos</a></li>
         </ul>
       </div>
       <div class="row flex-lg-nowrap">
@@ -139,7 +139,7 @@
 
                   <div class="input-group mb-3">
                     <input type="file" class="d-none" (change)="onPhotoSelected($event)" #photoInput id="urlphoto" name="urlphoto" [(ngModel)]="crew.urlphoto">                 
-                    <button id="upload" type="button" class="btn btn-primary btn-block" (click)="photoInput.click()">Procurar</button>
+                    <button id="upload" type="button" class="btn btn-primary" (click)="photoInput.click()">Procurar</button>
                   </div>
              
                   <hr>   

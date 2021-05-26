@@ -60,11 +60,20 @@
 
   
   img{
-    max-width: 20%;
-    max-height: 20%;
+    max-width: 45%;
+    max-height: 45%;
     
     display: block;
     margin: 0 auto;
+    }
+
+    .avatar img{
+      max-width: 100%;
+      max-height: 100%;
+      
+      display: block;
+      margin: 0 auto;
+  
     }
 
     .ml-2, .mx-2 {
@@ -95,13 +104,7 @@
 
 
 
-  img{
-    max-width: 45%;
-    max-height: 45%;
-    
-    display: block;
-    margin: 0 auto;
-    }
+
 
     .dashboard{
       font-size: 17px;

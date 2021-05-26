@@ -1,10 +1,11 @@
-import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
+import { Component, ElementRef, EventEmitter, OnInit, Output, ViewChild } from '@angular/core';
 import { NgbTypeahead } from '@ng-bootstrap/ng-bootstrap';
 import { merge, Observable, OperatorFunction, Subject } from 'rxjs';
 import { debounceTime, distinctUntilChanged, filter, map } from 'rxjs/operators';
 import { ApiService } from 'src/app/shared/services/api.service';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { HttpClient } from '@angular/common/http';
+
 
 // class Registration {
 //   constructor(
@@ -52,6 +53,10 @@ export class CrudteachersComponent implements OnInit {
   file: File;
   formData: FormData;
   submitType: string;
+
+
+
+
    
   constructor(private teachersService: ApiService) {}
 
@@ -269,3 +274,4 @@ export class CrudteachersComponent implements OnInit {
       };
   }
 }
+
