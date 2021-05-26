@@ -55,6 +55,7 @@
     min-width: 160px;
     box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
     padding-left: 0;
+    z-index: 99;
    }
    
    .submenu li{
@@ -66,6 +67,7 @@
    }
    .submenu li a:hover{
     background-color: #ddd;
+    width: 100%;    
    }
    
    .menu li:hover .submenu{

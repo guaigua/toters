@@ -160,7 +160,10 @@ export class CrudcursosComponent implements OnInit {
       .subscribe(   
         (data)=>{
           this.data = data;
-          this.successfully = true;         
+          this.successfully = true;
+          setTimeout(()=>{
+            this.successfully = false;
+          }, 5000);         
           console.log("Put con éxito", this.data);
           this.getCourses;
           this.crew = {};
@@ -173,7 +176,10 @@ export class CrudcursosComponent implements OnInit {
       .subscribe(   
         (data)=>{
           this.data = data;
-          this.successfully = true;        
+          this.successfully = true;
+          setTimeout(()=>{
+            this.successfully = false;
+          }, 5000);      
           console.log("Post con éxito", this.data);
           this.getCourses();
           this.crew = {};

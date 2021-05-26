@@ -39,7 +39,7 @@
                       <td>{{ teacher.birth }}</td>
                       <td>{{ teacher.country }}</td>
                       <td>
-                      <div *ngIf="teacher.urlphoto"><img src="http://localhost:8081/{{ teacher.urlphoto }}" alt="thumbnail" class="img-thumbnail"></div>
+                      <div *ngIf="teacher.urlphoto"><img src="http://localhost:8081/uploads/{{ teacher.urlphoto }}" alt="thumbnail" class="img-thumbnail"></div>
                       <div *ngIf="!teacher.urlphoto"><img src="assets/img/profile.png" alt="thumbnail" class="img-thumbnail"></div></td>
   
               
@@ -170,7 +170,7 @@
                     <input type="file" class="d-none" (change)="onPhotoSelected($event)" #photoInput id="urlphoto" name="urlphoto" [(ngModel)]="crew.urlphoto">
                  
     
-                    <button class="btn btn-primary btn-block">Upload</button>
+                    <button id="upload" type="button" class="btn btn-primary btn-block">Upload</button>
 
                   
                   </div>
@@ -180,7 +180,7 @@
 
                   <div class="row text-center ">
                       <div class="col-6">                        
-                          <button type="submit" class="btn btn-default btn-lg" >Enviar</button>
+                          <button id="submit" type="submit" class="btn btn-default btn-lg" >Enviar</button>
                       </div> 
                       <div class="col-6">   
                         <a href="#" class="pull-right btn btn-primary  btn-lg" data-dismiss="modal" >Fechar</a>

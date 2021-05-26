@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { NgbTypeahead } from '@ng-bootstrap/ng-bootstrap';
 import { merge, Observable, OperatorFunction, Subject } from 'rxjs';
 import { debounceTime, distinctUntilChanged, filter, map } from 'rxjs/operators';
@@ -29,6 +29,7 @@ export class CrudteachersComponent implements OnInit {
     action: "",
     teachers: []
   };
+
   // teachers: string = "teachers";
   teachers: any = [];
   crud: any = {};
@@ -42,7 +43,7 @@ export class CrudteachersComponent implements OnInit {
     firstname: "",
     lastname: "",​
     mail: "",
-    urlPhoto: File = null,    
+    urlPhoto: "",    
   };
   data: any = {};
   successfully: boolean = false;  
@@ -148,10 +149,11 @@ export class CrudteachersComponent implements OnInit {
   }
   // This method associate to Edit Button.
   onEdit(index: number, teacher: any ) {
-
+    var url = "http://localhost:8081/uploads/";
     this.submitType = 'update';
     this.crud.submitType = this.submitType;
     this.crew = teacher; 
+    this.photoSelected = url + teacher.urlphoto 
     console.log(this.crew);
   }
 
@@ -165,7 +167,10 @@ export class CrudteachersComponent implements OnInit {
       (data)=>{
         this.data = data;
         if(confirm("Vocẽ tem certeza que deseja apagar? ")) {
-        this.successfully = true;         
+        this.successfully = true;
+        setTimeout(()=>{
+          this.successfully = false;
+        }, 5000);       
         console.log("Eliminado con éxito", this.data);
         this.getTeachers();
         }
@@ -201,15 +206,20 @@ export class CrudteachersComponent implements OnInit {
 
   onSubmit(dataObj): void {
     this.validateForms(dataObj.form.value);
-    this.crew = dataObj.form.value;  
-    this.crew.urlphoto = this.crew.urlphoto.slice(13);
+    this.crew = dataObj.form.value;
+    this.crew.urlphoto = this.crew.urlphoto.match(/[^\\/]*$/)[0];
+    // this.crew.urlphoto = this.crew.urlphoto.slice(12);
     console.log(this.crew);  
     if (this.submitType == 'update') {
+      //Uploading Edit Body
       this.teachersService.putTeachers(this.crew, this.crew.id)
       .subscribe(   
         (data)=>{
           this.data = data;
-          this.successfully = true;         
+          this.successfully = true;
+          setTimeout(()=>{
+            this.successfully = false;
+          }, 5000);         
           console.log("Put con éxito", this.data);
           this.getTeachers();
           this.crew = {};
@@ -218,21 +228,23 @@ export class CrudteachersComponent implements OnInit {
           console.log(error);
         }); 
       } else {
-        //Uploading Body
+        //Uploading Create Body
         this.teachersService.postTeachers(this.crew)
         .subscribe(   
           (data)=>{
             this.data = data;
             this.successfully = true;
+            setTimeout(()=>{
+              this.successfully = false;
+            }, 5000);  
             this.crew = {};         
             console.log("Post con éxito", this.data);
-            this.getTeachers();
-            this.crew = {};
+            this.getTeachers();           
           },
           (error)=>{ 
             console.log(error);
           }); 
-
+        }
           
         //Uploading File
         this.formData = new FormData();
@@ -241,13 +253,16 @@ export class CrudteachersComponent implements OnInit {
         this.teachersService.uploadImage(this.formData).subscribe(   
           (data)=>{
             this.data = data;                 
-            console.log("Post con éxito", this.data);         
+            console.log("Post con éxito", this.data);  
+            this.photoSelected = "";
           },
           (error)=>{ 
             console.log(error);
           });   
-        }
+       
     }
+
+
     
  
     onFileChanged(event) {

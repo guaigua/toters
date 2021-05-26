@@ -21,7 +21,14 @@
     margin: 0 auto;
     }
 
+  .avatar img{
+    max-width: 100%;
+    max-height: 100%;
+    
+    display: block;
+    margin: 0 auto;
 
+  }
     .btn-outline-secondary{
       color: #fff;
       background-color: #6C3D7B;

@@ -182,7 +182,10 @@ onEdit(index: number, student: any ) {
       .subscribe(   
         (data)=>{
           this.data = data;
-          this.successfully = true;         
+          this.successfully = true;
+          setTimeout(()=>{
+            this.successfully = false;
+          }, 5000);        
           console.log("Put con éxito", this.data);
           this.getStudents();
           this.crew = {};
