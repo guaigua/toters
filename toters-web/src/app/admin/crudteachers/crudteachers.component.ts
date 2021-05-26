@@ -5,6 +5,7 @@ import { debounceTime, distinctUntilChanged, filter, map } from 'rxjs/operators'
 import { ApiService } from 'src/app/shared/services/api.service';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { HttpClient } from '@angular/common/http';
+
 // class Registration {
 //   constructor(
 //     public firstName: string = '',
@@ -16,9 +17,6 @@ import { HttpClient } from '@angular/common/http';
 //   ) {}
 // }
 
-
-
-
 @Component({
   selector: 'app-crudteachers',
   templateUrl: './crudteachers.component.html',
@@ -29,14 +27,11 @@ export class CrudteachersComponent implements OnInit {
     action: "",
     teachers: []
   };
-
-  // teachers: string = "teachers";
   teachers: any = [];
   crud: any = {};
   error: any = {};
   selectedFile: File;
  
-
   crew: any = {
     birth: "",​
     country: "",
@@ -47,19 +42,18 @@ export class CrudteachersComponent implements OnInit {
   };
   data: any = {};
   successfully: boolean = false;  
-  flag: any;
+ 
   name: any;
   x: any = {};
   array: any = [];
-  searchText: any;
 
-  fag: any = {};
+  searchText: any;
   photoSelected: string | ArrayBuffer;
   file: File;
   formData: FormData;
+  submitType: string;
    
-  constructor(private teachersService: ApiService,
-              private http: HttpClient) {}
+  constructor(private teachersService: ApiService) {}
 
     // // It maintains list of Registrations
     // registrations: Registration[] = [];
@@ -68,7 +62,7 @@ export class CrudteachersComponent implements OnInit {
     // It maintains registration form display status. By default it will be false.
     showNew: Boolean = false;
     // It will be either 'Save' or 'Update' based on operation.
-    submitType: string = 'Save';
+    // submitType: string = 'Save';
     // It maintains table row index based on selection.
     selectedRow: number;
     // It maintains Array of countries.
@@ -153,7 +147,7 @@ export class CrudteachersComponent implements OnInit {
     this.submitType = 'update';
     this.crud.submitType = this.submitType;
     this.crew = teacher; 
-    this.photoSelected = url + teacher.urlphoto 
+    this.photoSelected = url + teacher.urlphoto;
     console.log(this.crew);
   }
 
@@ -208,8 +202,7 @@ export class CrudteachersComponent implements OnInit {
     this.validateForms(dataObj.form.value);
     this.crew = dataObj.form.value;
     this.crew.urlphoto = this.crew.urlphoto.match(/[^\\/]*$/)[0];
-    // this.crew.urlphoto = this.crew.urlphoto.slice(12);
-    console.log(this.crew);  
+    //console.log(this.crew);  
     if (this.submitType == 'update') {
       //Uploading Edit Body
       this.teachersService.putTeachers(this.crew, this.crew.id)
@@ -223,6 +216,7 @@ export class CrudteachersComponent implements OnInit {
           console.log("Put con éxito", this.data);
           this.getTeachers();
           this.crew = {};
+          this.submitType = "";
         },
         (error)=>{ 
           console.log(error);
@@ -236,38 +230,35 @@ export class CrudteachersComponent implements OnInit {
             this.successfully = true;
             setTimeout(()=>{
               this.successfully = false;
-            }, 5000);  
-            this.crew = {};         
+            }, 5000);                     
             console.log("Post con éxito", this.data);
-            this.getTeachers();           
+            this.getTeachers();  
+            this.crew = {};
+            this.submitType = "";         
           },
           (error)=>{ 
             console.log(error);
           }); 
-        }
+      }
           
-        //Uploading File
-        this.formData = new FormData();
-        this.formData.append('urlphoto', this.file);
-    
-        this.teachersService.uploadImage(this.formData).subscribe(   
-          (data)=>{
-            this.data = data;                 
-            console.log("Post con éxito", this.data);  
-            this.photoSelected = "";
-          },
-          (error)=>{ 
-            console.log(error);
-          });   
-       
+      //Uploading File
+      this.formData = new FormData();
+      this.formData.append('urlphoto', this.file);
+  
+      this.teachersService.uploadImage(this.formData).subscribe(   
+        (data)=>{
+          this.data = data;                 
+          console.log("Post con éxito", this.data);  
+          this.photoSelected = "";
+        },
+        (error)=>{ 
+          console.log(error);
+        });
     }
 
 
     
  
-    onFileChanged(event) {
-      this.selectedFile = event.target.files[0]
-    }
     validateForms(data): void {
       this.crew = data;
      

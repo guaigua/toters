@@ -3,6 +3,19 @@ var router = express.Router();
 
 const { students } = require('../db');
 
+const multer = require('multer');
+
+const storage = multer.diskStorage({
+    destination: (req, file, callBack) => {
+        callBack(null, 'uploads')
+    },
+    filename: (req, file, callBack) => {
+        callBack(null, `${file.originalname}`)
+    }
+  })
+  
+const upload = multer({ storage: storage })
+
 // List students
 router.get('/students', async (req, res) => {
     const studentsList =  await students.findAll();
@@ -96,6 +109,18 @@ router.delete('/students/:id', async (req, res) => {
         return res.send({ error: e})
     }
 })
+
+router.post('/file', upload.single('urlphoto'), (req, res, next) => {
+    const file = req.file;
+    console.log(file.filename);
+
+    if (!file) {
+      const error = new Error('No File')
+      error.httpStatusCode = 400
+      return next(error)
+    }
+      res.send(file);
+  })
 
 
 

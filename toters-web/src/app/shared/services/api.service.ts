@@ -56,6 +56,7 @@ export class ApiService {
   }
 
   postStudents(data) {
+    console.log('POST')
     const headers = new Headers();
     // headers.append('Content-Type', 'application/json');
     return this.http.post(environment.url.students + 'students/', data);
@@ -63,6 +64,7 @@ export class ApiService {
   }
 
   putStudents(data, id:number) {
+    console.log('PUT')
     const headers = new Headers();
     // headers.append('Content-Type', 'application/json');
     return this.http.put(environment.url.students + 'students/' + id, data);
