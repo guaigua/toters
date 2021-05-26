@@ -180,9 +180,10 @@ export class CrudteachersComponent implements OnInit {
   }
 
   // This method associate toCancel Button.
-  onCancel() {
-    // Hide registration entry section.
-    this.showNew = false;
+  onClose() {
+    this.crew = {};
+    this.submitType = "";
+    this.photoSelected = "";
   }
 
   // This method associate to Bootstrap dropdown selection change.

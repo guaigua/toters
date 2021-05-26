@@ -148,6 +148,12 @@ export class CrudcursosComponent implements OnInit {
     // Hide registration entry section.
     this.showNew = false;
   }
+
+  onClose() {
+    this.crew = {};
+    this.submitType = "";
+  }
+
  
   onSubmit(dataObj): void {
     this.validateForms(dataObj.form.value);

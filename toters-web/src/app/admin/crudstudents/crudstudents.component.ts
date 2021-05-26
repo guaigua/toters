@@ -86,6 +86,13 @@ export class CrudstudentsComponent implements OnInit {
       }); 
   }
 
+  onClose() {
+    this.crew = {};
+    this.submitType = "";
+    this.photoSelected = "";
+  }
+
+
   onPhotoSelected(event): void {
     if (event.target.files && event.target.files[0]) {
       this.file = <File>event.target.files[0];
