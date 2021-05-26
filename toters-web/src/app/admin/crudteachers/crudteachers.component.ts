@@ -194,9 +194,7 @@ export class CrudteachersComponent implements OnInit {
       reader.onload = e => this.photoSelected = reader.result;
       reader.readAsDataURL(this.file);
     }
-  }
-
- 
+  } 
 
   onSubmit(dataObj): void {
     this.validateForms(dataObj.form.value);

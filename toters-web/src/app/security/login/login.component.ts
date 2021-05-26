@@ -19,10 +19,13 @@ export class LoginComponent implements OnInit {
   }
 
   onLogin(dataObj): void {
-    console.log('aqui');
-
     this.router.navigate(['admin']);
+  }
 
-
+  onTeachers(){
+    this.router.navigate(['admin']);
+  }
+  onStudents(){
+    this.router.navigate(['home']);
   }
 }

@@ -147,7 +147,7 @@
 
                   <div class="input-group mb-3">
                     <input type="file" class="d-none" (change)="onPhotoSelected($event)" #photoInput id="urlphoto" name="urlphoto" [(ngModel)]="crew.urlphoto">                 
-                    <button id="upload" type="button" class="btn btn-primary btn-block">Upload</button>
+                    <button id="upload" type="button" class="btn btn-primary btn-block" (click)="photoInput.click()">Procurar</button>
                   </div>
                
                   <hr>
