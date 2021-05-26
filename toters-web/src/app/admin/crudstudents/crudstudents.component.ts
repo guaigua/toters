@@ -38,7 +38,6 @@ export class CrudstudentsComponent implements OnInit {
 
   constructor(private studentsService: ApiService) {}
 
-
   ngOnInit(): void {
     this.getStudents();
   }
@@ -54,15 +53,13 @@ export class CrudstudentsComponent implements OnInit {
 
   // This method associate to New Button.
   onNew() { 
-    this.submitType = 'New';
-    this.crud.submitType = this.submitType;  
+    this.submitType = 'new';  
   }
 
   // This method associate to Edit Button.
   onEdit(index: number, student: any ) {
     var url = "http://localhost:8081/uploads/";
-    this.submitType = 'Update';
-    this.crud.submitType = this.submitType;
+    this.submitType = 'update';
     this.crew = student;
     this.photoSelected = url + student.urlphoto;
     console.log(this.crew)   ;
